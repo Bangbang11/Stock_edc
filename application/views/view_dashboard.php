@@ -19,46 +19,62 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-1">
 						<br>
-						<h2 style="margin-left: 10px;">Aplikasi Stok Opname <br>EDC BNI</h2>
+						<img src="<?php echo base_url();?>assets/logo/bni-logo-id.svg" alt="logo-bni">
 						<br>
+					</div>
+					<div class="col-md-5">
+						<h2 style="padding-top: 13px; margin-left: 70px;"><strong>Aplikasi Stok Opname <br>EDC BNI</strong></h2>
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
+</div>
 		<div>
 			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
   				<ul class="navbar-nav">
     				<li class="nav-item active">
-      					<a class="nav-link" href="<?php echo site_url();?>/sensus">DASHBOARD</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc">DASHBOARD</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/sensus/tampil_regions">ISSUE</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">ISSUE</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/sensus/tampil_person">EDC IN</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">EDC IN</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/sensus/data_penduduk">EDC OUT</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
     				</li>
-    				<li style="margin-left: 900px;" class="nav-item">
+    				
+    				<li style="margin-left: 950px;" class="nav-item">
     					<a class="nav-link" href="#">Logout</a>
     				</li>
   				</ul>
 			</nav>
 		</div>
+<div class="container-fluid">
 	<content>
 		<div class="row">
-			<div class="col-md-12">isi</div>
+			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
+				<div class="card">
+  					<div class="card-header">Dashboard</div>
+  					<div class="card-body">
+  						
+  					</div> 
+  					<div class="card-footer"></div>
+				</div>
+			</div>
 		</div>
 	</content>
-	<footer class="bg-light">
+</div>
+	<footer class="bg-secondary">
 		<div class="row">
-			<div class="col-md-12 "><h1 style="text-align: center;">ini footer</h1></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>
-</div>
 </body>
 </html>
