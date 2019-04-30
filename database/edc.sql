@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29 Apr 2019 pada 11.09
+-- Generation Time: 30 Apr 2019 pada 11.55
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -32,6 +32,13 @@ CREATE TABLE `admin` (
   `password` varchar(15) NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `created_at`) VALUES
+(1, 'admin', 'admin123', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -92,8 +99,8 @@ CREATE TABLE `issue` (
   `kondisi_edc` varchar(50) NOT NULL,
   `mid` int(100) NOT NULL,
   `tid` int(100) NOT NULL,
-  `nama_merchant/agen` varchar(100) NOT NULL,
-  `alamat_merchant/agen` text NOT NULL,
+  `nama_merchant` varchar(100) NOT NULL,
+  `alamat_merchant` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
   `status_issue` varchar(50) NOT NULL,
   `case_issue` varchar(50) NOT NULL,
@@ -138,7 +145,7 @@ ALTER TABLE `issue`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `issue`
 --
