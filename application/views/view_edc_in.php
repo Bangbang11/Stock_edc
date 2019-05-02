@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="image/png" rel="icon" href="<?php echo base_url();?>assets/logo/icon2.png">
 	
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link href="<?php echo base_url();?>assets/fontawesome/css/all.css" rel="stylesheet">
@@ -25,7 +26,7 @@
             <br>
           </div>
 					<div class="col-md-5">
-						<h2 style="padding-top: 13px; margin-left: 70px;"><strong>Aplikasi Stok Opname <br>EDC BNI</strong></h2>
+						<h2 style="padding-top: 13px; margin-left: 70px;"><strong>Aplikasi Stock Opname <br>EDC BNI</strong></h2>
 					</div>
 				</div>
 			</div>
@@ -47,13 +48,16 @@
     				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
     				</li>
-    				<li style="margin-left: 950px;" class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
+            </li>
+    				<li style="margin-left: 850px;" class="nav-item">
     					<a class="nav-link" href="#">Logout</a>
     				</li>
   				</ul>
 			</nav>
 		</div>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 200px;">
 	<content>
 		<div class="row">
 			<div style="margin-top: 10px; margin-bottom: 10px;" class="col-md-12">
@@ -66,8 +70,6 @@
                                 	<tr>
                                     	<th style='text-align:center'>Serial Number</th>
                                     	<th style='text-align:center'>Tipe EDC</th>
-                                    	<th style='text-align:center'>MID</th>
-                                    	<th style='text-align:center'>TID</th>
                                     	<th style='text-align:center'>Kondisi</th>
                                     	<th style='text-align:center'>Tanggal Masuk</th>
                                     	<th style='text-align:center'>Aksi</th>
@@ -75,17 +77,15 @@
                             	</thead>
                             	<tbody>
                                   
-<!--								<?php
-									if(!empty($data_person)){
-    									foreach($data_person as $data){ ?>
+								<?php
+									if(!empty($data_edc_in)){
+    									foreach($data_edc_in as $data){ ?>
         							<tr>
-        								<td style='text-align:center'  data-title='No'><?php echo $data->id; ?></td>
-        								<td style='text-align:center; text-transform:capitalize;' data-title='Nama'><?php echo $data->name; ?></td>
-        								<td style='text-align:center'  data-title='kode_murid' ><?php echo $data->region_id; ?></td>
-        								<td style='text-align:center'  data-title='kode_murid' ><?php echo $data->address; ?></td>
-        								<td style='text-align:center'  data-title='kode_murid' ><?php echo $data->income;?></td>
-        								<td style='text-align:center'  data-title='kode_murid' ><?php echo $data->created_at;?></td>
-        								<td style='text-align:center' data-title='aksi_person'>
+        								<td style='text-align:center'  data-title='Serial Number'><?php echo $data->serial_number; ?></td>
+        								<td style='text-align:center' data-title='Tipe EDC'><?php echo $data->tipe_edc; ?></td>
+        								<td style='text-align:center'  data-title='Kondisi' ><?php echo $data->kondisi;?></td>
+        								<td style='text-align:center'  data-title='Tanggal Masuk' ><?php echo $data->date_in;?></td>
+        								<td style='text-align:center' data-title='aksi_edc_in'>
                     						<a href="#" class="label label-warning">
                     							<i class= 'fas fa-edit'></i>&nbsp;Ubah</a>
                     						<a href="#" class="label label-danger">
@@ -96,7 +96,7 @@
 								    }
 									}
 								?>
-                                   -->   
+                                   
                             	</tbody>
                         	</table> 
   						</div> 

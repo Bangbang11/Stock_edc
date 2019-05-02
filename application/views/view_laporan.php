@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Halaman Issue</title>
+	<title>Halaman Laporan</title>
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +20,14 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
-          <div class="col-md-1">
-            <br>
-            <img src="<?php echo base_url();?>assets/logo/bni-logo-id.svg" alt="logo-bni">
-            <br>
-          </div>
+					<div class="col-md-1">
+            			<br>
+            			<img src="<?php echo base_url();?>assets/logo/bni-logo-id.svg" alt="logo-bni" >
+            			<br>
+            		</div>
 					<div class="col-md-5">
-						<h2 style="padding-top: 13px; margin-left: 70px;"><strong>Aplikasi Stock Opname <br>EDC BNI</strong></h2>
+						<h2 style="padding-top: 13px; margin-left: 70px;"><strong> Aplikasi Stock Opname <br>EDC BNI</strong></h2>
+						
 					</div>
 				</div>
 			</div>
@@ -39,7 +40,7 @@
     				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc">DASHBOARD</a>
     				</li>
-    				<li class="nav-item active">
+    				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">ISSUE</a>
     				</li>
     				<li class="nav-item">
@@ -48,10 +49,9 @@
     				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
     				</li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
-            </li>
-
+    				<li class="nav-item active">
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
+    				</li>
     				<li style="margin-left: 850px;" class="nav-item">
     					<a class="nav-link" href="#">Logout</a>
     				</li>
@@ -63,15 +63,8 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
 				<div class="card">
-  					<div class="card-header">Issue</div>
+  					<div class="card-header">Laporan Issue</div>
   					<div class="card-body">
-  						<button>
-  							<a href='<?php echo site_url();?>/stok_edc/tampil_edc_out' class='btn btn-succes'><i class='fas fa-plus-square'></i>&nbsp;Tambah Issue</a>
-  						</button>
-              <button>
-                <a href='#' class='btn btn-succes'><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
-              </button>
-  						<br>
   						<br>
   						<table class="table table-striped table-condensed table-hover cf" id="dataTables-example">
                             <thead class="cf">
@@ -80,28 +73,26 @@
                                     <th style='text-align:center'>Tipe EDC</th>
                                     <th style='text-align:center'>MID</th>
                                     <th style='text-align:center'>TID</th>
-                                    <th style='text-align:center'>Kasus Issue</th>
-                                    <th style='text-align:center'>Status Issue</th>
-                                    <th style='text-align:center'>Tanggal Masuk</th>
+                                    <th style='text-align:center'>Nama Merchant/Agen</th>
+                                    <th style='text-align:center'>Vendor</th>
                                     <th style='text-align:center'>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>                                  
 								<?php
-									if(!empty($data_issue)){
-    									foreach($data_issue as $data){ ?>
+									if(!empty($data_laporan)){
+    									foreach($data_laporan as $data){ ?>
         						<tr>
         							<td style='text-align:center'  data-title='Serial Number'><?php echo $data->serial_number; ?></td>
         							<td style='text-align:center'  data-title='Tipe EDC' ><?php echo $data->tipe_edc; ?></td>
         							<td style='text-align:center' data-title='MID'><?php echo $data->mid; ?></td>
                       <td style='text-align:center' data-title='TID'><?php echo $data->tid; ?></td>
-                      <td style='text-align:center' data-title='Kasus Issue'><?php echo $data->case_issue; ?></td>
-                      <td style='text-align:center' data-title='Status Issue'><?php echo $data->status_issue; ?></td>
-                      <td style='text-align:center' data-title='Tanggal Masuk'><?php echo $data->date_in; ?></td>
-       								<td style='text-align:center' data-title='aksi_issue'>
-                    					<a href="#" class="label label-warning">
+                      <td style='text-align:center; text-transform:capitalize;' data-title='Nama Merchant/agen'><?php echo $data->nama_merchant; ?></td>
+                      <td style='text-align:center; text-transform:capitalize;' data-title='Vendor'><?php echo $data->vendor; ?></td>
+       								<td style='text-align:center' data-title='aksi_laporan'>
+                    					<a href="" class="label label-warning">
                     						<i class= 'fas fa-edit'></i>&nbsp;Ubah</a>
-                    					<a href="#" class="label label-danger">
+                    					<a href="" class="label label-danger">
                     						<i class= 'fas fa-trash'></i>&nbsp;Hapus</a>
               						</td>
      							</tr> 
@@ -121,9 +112,9 @@
 </div>
 	<footer class="bg-secondary">
 		<div class="row">
-      <div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
-      <div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
-      <div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>
 </body>

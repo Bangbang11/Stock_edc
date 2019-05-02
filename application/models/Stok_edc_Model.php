@@ -74,4 +74,20 @@ class Stok_edc_Model extends CI_Model
 		}
 	}
 
+	public function tampil_edc_in_model(){
+		return $this->db->query('SELECT * FROM  edc_in ORDER BY serial_number ASC')->result();
+	}
+
+	public function tampil_edc_out_model(){
+		return $this->db->query('SELECT * FROM edc_out ORDER BY serial_number ASC')->result();
+	}
+
+	public function tampil_laporan_model(){
+		return $this->db->query('SELECT * FROM laporan ORDER BY id ASC')->result();
+	}
+
+	public function tampil_issue_model(){
+		return $this->db->query('SELECT * FROM issue ORDER BY id ASC')->result();
+	}
+
 }

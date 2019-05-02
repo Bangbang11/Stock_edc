@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="image/png" rel="icon" href="<?php echo base_url();?>assets/logo/icon2.png">
 	
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link href="<?php echo base_url();?>assets/fontawesome/css/all.css" rel="stylesheet">
@@ -25,7 +26,7 @@
 						<br>
 					</div>
 					<div class="col-md-5">
-						<h2 style="padding-top: 13px; margin-left: 70px;"><strong>Aplikasi Stok Opname <br>EDC BNI</strong></h2>
+						<h2 style="padding-top: 13px; margin-left: 70px;"><strong>Aplikasi Stock Opname <br>EDC BNI</strong></h2>
 					</div>
 				</div>
 			</div>
@@ -47,14 +48,17 @@
     				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
     				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
+    				</li>
     				
-    				<li style="margin-left: 950px;" class="nav-item">
+    				<li style="margin-left: 850px;" class="nav-item">
     					<a class="nav-link" href="#">Logout</a>
     				</li>
   				</ul>
 			</nav>
 		</div>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 200px;">
 	<content>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">

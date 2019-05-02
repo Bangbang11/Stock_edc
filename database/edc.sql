@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Apr 2019 pada 11.55
+-- Generation Time: 02 Mei 2019 pada 11.34
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -47,13 +47,13 @@ INSERT INTO `admin` (`id`, `username`, `password`, `created_at`) VALUES
 --
 
 CREATE TABLE `edc_in` (
-  `serial_number` int(100) NOT NULL,
+  `serial_number` bigint(100) NOT NULL,
   `tipe_edc` varchar(100) NOT NULL,
   `kondisi` varchar(50) NOT NULL,
   `status_edc` varchar(50) NOT NULL,
   `kondisi_edc` varchar(50) NOT NULL,
-  `mid` int(100) NOT NULL,
-  `tid` int(100) NOT NULL,
+  `mid` bigint(100) NOT NULL,
+  `tid` bigint(100) NOT NULL,
   `nama_merchant/agen` varchar(100) NOT NULL,
   `alamat_merchant/agen` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
@@ -61,6 +61,13 @@ CREATE TABLE `edc_in` (
   `date_out` date NOT NULL,
   `vendor` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `edc_in`
+--
+
+INSERT INTO `edc_in` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant/agen`, `alamat_merchant/agen`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
+(1234567891, 'sonic', 'baru', 'available', 'baik', 123456789, 123456789, 'bee mart', 'jl.tralala trilili', 'agen', '2019-05-02', '2019-05-03', 'bpjs');
 
 -- --------------------------------------------------------
 
@@ -69,13 +76,13 @@ CREATE TABLE `edc_in` (
 --
 
 CREATE TABLE `edc_out` (
-  `serial_number` int(100) NOT NULL,
+  `serial_number` bigint(100) NOT NULL,
   `tipe_edc` varchar(100) NOT NULL,
   `kondisi` varchar(50) NOT NULL,
   `status_edc` varchar(50) NOT NULL,
   `kondisi_edc` varchar(50) NOT NULL,
-  `mid` int(100) NOT NULL,
-  `tid` int(100) NOT NULL,
+  `mid` bigint(100) NOT NULL,
+  `tid` bigint(100) NOT NULL,
   `nama_merchant/agen` varchar(100) NOT NULL,
   `alamat_merchant/agen` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
@@ -83,6 +90,13 @@ CREATE TABLE `edc_out` (
   `date_out` date NOT NULL,
   `vendor` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `edc_out`
+--
+
+INSERT INTO `edc_out` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant/agen`, `alamat_merchant/agen`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
+(1234567891, 'sonic', 'baru', 'available', 'baik', 123456789, 123456789, 'bee mart', 'jl.tralala trilili', 'agen', '2019-05-02', '2019-05-03', 'bpjs');
 
 -- --------------------------------------------------------
 
@@ -92,13 +106,38 @@ CREATE TABLE `edc_out` (
 
 CREATE TABLE `issue` (
   `id` int(100) NOT NULL,
-  `serial_number` int(100) NOT NULL,
+  `serial_number` bigint(100) NOT NULL,
   `tipe_edc` varchar(100) NOT NULL,
   `kondisi` varchar(50) NOT NULL,
   `status_edc` varchar(50) NOT NULL,
   `kondisi_edc` varchar(50) NOT NULL,
-  `mid` int(100) NOT NULL,
-  `tid` int(100) NOT NULL,
+  `mid` bigint(100) NOT NULL,
+  `tid` bigint(100) NOT NULL,
+  `nama_merchant` varchar(100) NOT NULL,
+  `alamat_merchant` text NOT NULL,
+  `digunakan` varchar(50) NOT NULL,
+  `status_issue` varchar(50) NOT NULL,
+  `case_issue` varchar(50) NOT NULL,
+  `vendor` varchar(100) NOT NULL,
+  `date_in` date NOT NULL,
+  `date_out` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `laporan`
+--
+
+CREATE TABLE `laporan` (
+  `id` int(255) NOT NULL,
+  `serial_number` bigint(100) NOT NULL,
+  `tipe_edc` varchar(100) NOT NULL,
+  `kondisi` varchar(50) NOT NULL,
+  `status_edc` varchar(50) NOT NULL,
+  `kondisi_edc` varchar(50) NOT NULL,
+  `mid` bigint(100) NOT NULL,
+  `tid` bigint(100) NOT NULL,
   `nama_merchant` varchar(100) NOT NULL,
   `alamat_merchant` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
@@ -138,6 +177,12 @@ ALTER TABLE `issue`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `laporan`
+--
+ALTER TABLE `laporan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -151,6 +196,11 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `issue`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `laporan`
+--
+ALTER TABLE `laporan`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
