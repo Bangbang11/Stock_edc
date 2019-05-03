@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02 Mei 2019 pada 11.34
+-- Generation Time: 03 Mei 2019 pada 10.56
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -123,6 +123,13 @@ CREATE TABLE `issue` (
   `date_out` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `issue`
+--
+
+INSERT INTO `issue` (`id`, `serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `status_issue`, `case_issue`, `vendor`, `date_in`, `date_out`) VALUES
+(1, 1234567891, 'sonic', 'baru', 'available', 'baik', 12345768, 12345768, 'bee mart', 'jl.tralala trilili', 'merchant', 'proccess', 'error', 'bpjs', '2019-05-02', '2019-05-03');
+
 -- --------------------------------------------------------
 
 --
@@ -147,6 +154,13 @@ CREATE TABLE `laporan` (
   `date_in` date NOT NULL,
   `date_out` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `laporan`
+--
+
+INSERT INTO `laporan` (`id`, `serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `status_issue`, `case_issue`, `vendor`, `date_in`, `date_out`) VALUES
+(1, 1234567891, 'sonic', 'baru', 'available', 'baik', 12345768, 12345768, 'bee mart', 'jl.tralala trilili', 'merchant', 'proccess', 'error', 'bpjs', '2019-05-02', '2019-05-03');
 
 --
 -- Indexes for dumped tables
@@ -195,12 +209,12 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

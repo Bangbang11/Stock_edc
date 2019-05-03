@@ -64,6 +64,27 @@
 				<div class="card">
   					<div class="card-header">Data EDC IN/EDC Masuk</div>
   					<div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-2">
+                      
+                    </div>
+                    <div class="col-md-3">
+                      
+                    </div>
+                    <div class="col-md-7">
+                      <form>
+                        <div class="form-group form-inline">
+                          <input type="text" name="search" placeholder="Search" class="form-control" style="width: 670px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
+                          <input type="submit" value="Cari" class="form-control btn btn-primary" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>      
+              </div>
+
   							<br>
   							<table class="table table-striped table-condensed table-hover cf" id="dataTables-example">
                             	<thead class="cf">
@@ -87,7 +108,7 @@
         								<td style='text-align:center'  data-title='Tanggal Masuk' ><?php echo $data->date_in;?></td>
         								<td style='text-align:center' data-title='aksi_edc_in'>
                     						<a href="#" class="label label-warning">
-                    							<i class= 'fas fa-edit'></i>&nbsp;Ubah</a>
+                    							<i class= 'fas fa-edit'></i>&nbsp;Detail</a>
                     						<a href="#" class="label label-danger">
                     							<i class= 'fas fa-trash'></i>&nbsp;Hapus</a>
               							</td>

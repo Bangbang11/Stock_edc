@@ -21,6 +21,10 @@ class Stok_edc extends CI_Controller
 		$this->load->view('view_issue', $tampil_data_issue);
 	}
 
+	public function form_edc_in(){
+		$this->load->view('view_form_edc_in');
+	}
+
 	public function tampil_edc_in(){
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_model();
 		$this->load->view('view_edc_in', $tampil_data_edc_in);
