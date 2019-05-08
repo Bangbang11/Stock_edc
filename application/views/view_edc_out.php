@@ -111,7 +111,7 @@
         							<td style='text-align:center' data-title='Kondisi'><?php echo $data->kondisi; ?></td>
         							<td style='text-align:center' data-title='Tanggal Keluar'><?php echo $data->date_out; ?></td>
        								<td style='text-align:center' data-title='aksi_edc_out'>
-                    					<a href="#" class="label label-warning">
+                    					<a href="<?php echo site_url();?>/stok_edc/detail_edc_out/<?php echo $data->serial_number;?>" class="label label-warning">
                     						<i class= 'fas fa-edit'></i>&nbsp;Detail</a>
                     					<a href="#" class="label label-danger">
                     						<i class= 'fas fa-trash'></i>&nbsp;Hapus</a>

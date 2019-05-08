@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Mei 2019 pada 10.56
+-- Generation Time: 08 Mei 2019 pada 10.45
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -54,8 +54,8 @@ CREATE TABLE `edc_in` (
   `kondisi_edc` varchar(50) NOT NULL,
   `mid` bigint(100) NOT NULL,
   `tid` bigint(100) NOT NULL,
-  `nama_merchant/agen` varchar(100) NOT NULL,
-  `alamat_merchant/agen` text NOT NULL,
+  `nama_merchant` varchar(100) NOT NULL,
+  `alamat_merchant` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
   `date_in` date NOT NULL,
   `date_out` date NOT NULL,
@@ -66,7 +66,8 @@ CREATE TABLE `edc_in` (
 -- Dumping data untuk tabel `edc_in`
 --
 
-INSERT INTO `edc_in` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant/agen`, `alamat_merchant/agen`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
+INSERT INTO `edc_in` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
+(987654321, 'PAXD210', 'baru', 'available', 'baik', 0, 0, '-', '-', '-', '2019-05-08', '2019-05-15', '-'),
 (1234567891, 'sonic', 'baru', 'available', 'baik', 123456789, 123456789, 'bee mart', 'jl.tralala trilili', 'agen', '2019-05-02', '2019-05-03', 'bpjs');
 
 -- --------------------------------------------------------
@@ -83,8 +84,8 @@ CREATE TABLE `edc_out` (
   `kondisi_edc` varchar(50) NOT NULL,
   `mid` bigint(100) NOT NULL,
   `tid` bigint(100) NOT NULL,
-  `nama_merchant/agen` varchar(100) NOT NULL,
-  `alamat_merchant/agen` text NOT NULL,
+  `nama_merchant` varchar(100) NOT NULL,
+  `alamat_merchant` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
   `date_in` date NOT NULL,
   `date_out` date NOT NULL,
@@ -95,7 +96,7 @@ CREATE TABLE `edc_out` (
 -- Dumping data untuk tabel `edc_out`
 --
 
-INSERT INTO `edc_out` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant/agen`, `alamat_merchant/agen`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
+INSERT INTO `edc_out` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
 (1234567891, 'sonic', 'baru', 'available', 'baik', 123456789, 123456789, 'bee mart', 'jl.tralala trilili', 'agen', '2019-05-02', '2019-05-03', 'bpjs');
 
 -- --------------------------------------------------------

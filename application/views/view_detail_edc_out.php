@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Form Tambah EDC</title>
+	<title>Detail EDC OUT</title>
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
 			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
   				<ul class="navbar-nav">
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">Kembali</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">Kembali</a>
     				</li>
 
     				
@@ -52,15 +52,19 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
 				<div class="card">
-  					<div class="card-header">Form Data EDC Masuk/EDC IN</div>
+  					<div class="card-header">Detail EDC Keluar/EDC OUT</div>
   					<div class="card-body">
   						<br>
               <form method="post" action="<?php echo site_url();?>/stok_edc/tambah_edc_in" enctype="multipart/form-data">
+                <?php 
+               if(!empty($data_edc_out)) {
+               foreach($data_edc_out as $data) {
+               ?>
                 <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Serial Number </label>
                     <div class="col-sm-10">
                       <div class="f">
-                        : <input type="text" class="form-control" name="serial_number" placeholder="Seial Number"  style="width: 1000px;" required="">
+                        : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->serial_number;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -68,13 +72,7 @@
                   <label class="col-sm-2 control-label">Tipe EDC </label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <select name="tipe_edc" class="form-control" style="width: 1000px;">
-                          <option value="ICT220">ICT220</option>
-                          <option value="ICT250">ICT250</option>
-                          <option value="IWC220">IWC220</option>
-                          <option value="MOVE2500">MOVE2500</option>
-                          <option value="PAXD210">PAXD210</option>
-                        </select>
+                        : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->tipe_edc;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -82,10 +80,7 @@
                   <label class="col-sm-2 control-label">Kondisi 1</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <select name="kondisi_1" class="form-control" style="width: 1000px;">
-                          <option value="baru">Baru</option>
-                          <option value="bekas">Bekas</option>
-                        </select>
+                        : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->kondisi;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -93,11 +88,7 @@
                   <label class="col-sm-2 control-label">Status EDC</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <select name="status_edc" class="form-control" style="width: 1000px;">
-                          <option value="available">Available</option>
-                          <option value="out">Out</option>
-                          <option value="event">Event</option>
-                        </select>
+                        : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->status_edc;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -105,10 +96,7 @@
                   <label class="col-sm-2 control-label">Kondisi 2</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <select name="kondisi_edc" class="form-control" style="width: 1000px;">
-                          <option value="baik">Baik</option>
-                          <option value="rusak">Rusak</option>
-                        </select>
+                        : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->kondisi_edc;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -116,7 +104,7 @@
                   <label class="col-sm-2 control-label">MID</label>
                     <div class="col-sm-10">
                       <div class="f">
-                        : <input type="text" class="form-control" name="mid" placeholder="MID" style="width: 1000px;">
+                        : <input type="text" class="form-control" name="mid" value="<?php echo $data->mid;?>" style="width: 1000px;">
                       </div>
                     </div>
                 </div>
@@ -124,7 +112,7 @@
                   <label class="col-sm-2 control-label">TID</label>
                     <div class="col-sm-10">
                       <div class="f">
-                        : <input type="text" class="form-control" name="tid" placeholder="TID" style="width: 1000px;" >
+                        : <input type="text" class="form-control" name="tid" value="<?php echo $data->tid;?>" style="width: 1000px;" >
                       </div>
                     </div>
                 </div>
@@ -132,7 +120,7 @@
                   <label class="col-sm-2 control-label">Nama Merchant/Agen</label>
                     <div class="col-sm-10">
                       <div class="f">
-                        : <input type="text" class="form-control" name="nama_merchant" placeholder="Nama Merchant/Agen"  style="width: 1000px;">
+                        : <input type="text" class="form-control" name="nama_merchant" value="<?php echo $data->nama_merchant;?>"  style="width: 1000px;">
                       </div>
                     </div>
                 </div>
@@ -140,7 +128,7 @@
                   <label class="col-sm-2 control-label">Alamat Merchant/Agen</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <textarea rows="5" cols="30" class="form-control" name="alamat" placeholder="Alamat Merchant/Agen" style="width: 1000px;"></textarea> 
+                        : <textarea rows="5" cols="30" class="form-control" name="alamat" value="<?php echo $data->alamat_merchant;?>" style="width: 1000px;"><?php echo $data->alamat_merchant;?></textarea> 
                       </div>
                     </div>
                 </div>
@@ -148,11 +136,7 @@
                   <label class="col-sm-2 control-label">Digunakan</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <select name="digunakan" class="form-control" style="width: 1000px;">
-                          <option value="-">-</option>
-                          <option value="Merchant">Merchant</option>
-                          <option value="agen">Agen</option>
-                        </select>
+                        : <input type="text" class="form-control" name="nama_merchant" value="<?php echo $data->digunakan;?>"  style="width: 1000px;">
                       </div>
                     </div>
                 </div>
@@ -160,13 +144,7 @@
                   <label class="col-sm-2 control-label" >Vendor</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <select name="vendor" class="form-control" style="width: 1000px;">
-                          <option value="-">-</option>
-                          <option value="VISIONET">VISIONET</option>
-                          <option value="BEPS">BEPS</option>
-                          <option value="PRIMA VISTA">PRIMA VISTA</option>
-                          <option value="INGENICO">INGENICO</option>
-                        </select>
+                        : <input type="text" class="form-control" name="nama_merchant" value="<?php echo $data->vendor;?>"  style="width: 1000px;">
                       </div>
                     </div>
                 </div>
@@ -174,7 +152,7 @@
                   <label class="col-sm-2 control-label">Tanggal Masuk</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <input type="text" class="form-control datepicker" name="date_in" placeholder="Tanggal Masuk" style="width: 1000px;">
+                        : <input type="text" class="form-control datepicker" name="date_in" value="<?php echo $data->date_in;?>" style="width: 1000px;">
                       </div>
                     </div>
                 </div>
@@ -182,7 +160,7 @@
                   <label class="col-sm-2 control-label">Tanggal Keluar</label>
                     <div class="col-sm-10">
                       <div class="f"> 
-                        : <input type="text" class="form-control datepicker" name="date_out" placeholder="Tanggal Keluar" style="width: 1000px;">
+                        : <input type="text" class="form-control datepicker" name="date_out" value="<?php echo $data->date_out;?>" style="width: 1000px;">
                       </div>
                     </div>
                 </div>
@@ -195,6 +173,10 @@
                 </div>
               </form>  						
   					</div> 
+            <?php 
+             }
+             } 
+             ?>
   					<div class="card-footer"></div>
 				</div>
 			</div>
