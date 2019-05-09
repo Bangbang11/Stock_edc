@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail EDC OUT</title>
+	<title>Detail EDC IN</title>
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
 			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
   				<ul class="navbar-nav">
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">Kembali</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">Kembali</a>
     				</li>
 
     				
@@ -52,13 +52,13 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
 				<div class="card">
-  					<div class="card-header">Detail EDC Keluar/EDC OUT</div>
+  					<div class="card-header">Detail EDC IN/EDC IN</div>
   					<div class="card-body">
   						<br>
-              <form method="post" action="<?php echo site_url();?>/stok_edc/tambah_issue_out" enctype="multipart/form-data">
+              <form method="post" action="<?php echo site_url();?>/stok_edc/tambah_edc_out_merchant" enctype="multipart/form-data">
                 <?php 
-               if(!empty($data_edc_out)) {
-               foreach($data_edc_out as $data) {
+               if(!empty($data_edc_in)) {
+               foreach($data_edc_in as $data) {
                ?>
                 <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Serial Number </label>
@@ -101,54 +101,6 @@
                     </div>
                 </div>
                 <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">MID</label>
-                    <div class="col-sm-10">
-                      <div class="f">
-                        : <input type="text" class="form-control" name="mid" value="<?php echo $data->mid;?>" style="width: 1000px;">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">TID</label>
-                    <div class="col-sm-10">
-                      <div class="f">
-                        : <input type="text" class="form-control" name="tid" value="<?php echo $data->tid;?>" style="width: 1000px;" >
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">Nama Merchant/Agen</label>
-                    <div class="col-sm-10">
-                      <div class="f">
-                        : <input type="text" class="form-control" name="nama_merchant" value="<?php echo $data->nama_merchant;?>"  style="width: 1000px;">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">Alamat Merchant/Agen</label>
-                    <div class="col-sm-10">
-                      <div class="f"> 
-                        : <textarea rows="5" cols="30" class="form-control" name="alamat" value="<?php echo $data->alamat_merchant;?>" style="width: 1000px;"><?php echo $data->alamat_merchant;?></textarea> 
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">Digunakan</label>
-                    <div class="col-sm-10">
-                      <div class="f"> 
-                        : <input type="text" class="form-control" name="digunakan" value="<?php echo $data->digunakan;?>"  style="width: 1000px;">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label" >Vendor</label>
-                    <div class="col-sm-10">
-                      <div class="f"> 
-                        : <input type="text" class="form-control" name="vendor" value="<?php echo $data->vendor;?>"  style="width: 1000px;">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Tanggal Masuk</label>
                     <div class="col-sm-10">
                       <div class="f"> 
@@ -167,7 +119,7 @@
                 <div class="form-group form-inline">
                   <div class="col-sm-10">
                     <div class="f"> 
-                      <input class="btn btn-primary" style="height:60px; " type="submit" value="Tambahkan sebagai Issue" />
+                      <input class="btn btn-primary" style="height:60px; " type="submit" value="Gunakan EDC" />
                     </div>
                   </div>
                 </div>

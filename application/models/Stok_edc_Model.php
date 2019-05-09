@@ -74,6 +74,12 @@ class Stok_edc_Model extends CI_Model
 		}
 	}
 
+	public function tambah_issue($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue){
+		$this->db->query("INSERT INTO issue (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
+		$this->db->query("DELETE FROM edc_out WHERE serial_number = '".$serial_number."'");
+		header('location:'.site_url().'/stok_edc/tampil_issue');
+	}
+
 	public function tampil_edc_in_model(){
 		return $this->db->query('SELECT * FROM  edc_in ORDER BY serial_number ASC')->result();
 	}
@@ -83,12 +89,22 @@ class Stok_edc_Model extends CI_Model
 		header('location:'.site_url().'/stok_edc/tampil_edc_in');
 	}
 
+	public function per_iddetail_edc_in($serial_number) {
+		return $this->db->query('SELECT * FROM edc_in WHERE serial_number = "'.$serial_number.'" ')->result();
+	}
+
 	public function tampil_edc_out_model(){
 		return $this->db->query('SELECT * FROM edc_out ORDER BY serial_number ASC')->result();
 	}
 
 	public function per_iddetail_edc_out($serial_number) {
 		return $this->db->query('SELECT * FROM edc_out WHERE serial_number = "'.$serial_number.'" ')->result();
+	}
+
+	public function tambah_edc_out($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
+		$this->db->query("INSERT INTO edc_out (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("DELETE FROM edc_in WHERE serial_number = '".$serial_number."'");
+		header('location:'.site_url().'/stok_edc/tampil_edc_out');
 	}
 
 	public function tampil_laporan_model(){
