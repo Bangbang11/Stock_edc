@@ -21,6 +21,34 @@ class Stok_edc extends CI_Controller
 		$this->load->view('view_issue', $tampil_data_issue);
 	}
 
+	public function detail_issue(){
+		$data['data_issue'] = $this->Stok_edc_Model->per_iddetail_issue($this->uri->segment(3));
+ 		$this->load->view('view_detail_issue', $data);
+	}
+
+	public function rusak_done_issue() {
+		$data_rusak_done = $this->Stok_edc_Model->per_idrusak_done_issue($this->uri->segment(3));
+ 		if(!empty($data_rusak_done)){
+ 			foreach ($data_rusak_done as $data) {
+ 				$id = $data->id;
+ 				$serial_number = $data->serial_number;
+				$tipe_edc = $data->tipe_edc;
+				$kondisi_1 = $data->kondisi;
+				$status_edc = $data->status_edc;
+				$kondisi_edc = $data->kondisi_edc;
+				$mid = $data->mid;
+				$tid = $data->tid;
+				$nama_merchant = $data->nama_merchant;
+				$alamat = $data->alamat_merchant;
+				$digunakan = $data->digunakan;
+				$vendor = $data->vendor;
+				$date_in = $data->date_in;
+				$date_out = $data->date_out;
+				$this->Stok_edc_Model->rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out);
+ 		}
+ 		}
+	}
+
 	public function tambah_issue_out(){
 
 		$data['serial_number'] = $this->input->post('serial_number');

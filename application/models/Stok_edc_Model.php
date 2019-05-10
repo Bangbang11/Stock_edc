@@ -89,6 +89,20 @@ class Stok_edc_Model extends CI_Model
 		header('location:'.site_url().'/stok_edc/tampil_edc_in');
 	}
 
+	public function per_iddetail_issue($id) {
+		return $this->db->query('SELECT * FROM issue WHERE id = "'.$id.'" ')->result();
+	}
+
+	public function per_idrusak_done_issue($id) {
+		return $this->db->query('SELECT * FROM issue WHERE id = "'.$id.'" ')->result();
+	}
+
+	public function rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
+		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
+		header('location:'.site_url().'/stok_edc/tampil_edc_in');
+	}
+
 	public function per_iddetail_edc_in($serial_number) {
 		return $this->db->query('SELECT * FROM edc_in WHERE serial_number = "'.$serial_number.'" ')->result();
 	}
