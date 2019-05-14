@@ -133,8 +133,8 @@
                     <div class="col-sm-10">
                       <div class="f"> 
                         : <select name="digunakan" class="form-control" style="width: 1000px;">
-                          <option value="-">Merchant</option>
-                          <option value="VISIONET">Agen</option>
+                          <option value="Merchant">Merchant</option>
+                          <option value="Agen">Agen</option>
                         </select>
                      </div>
                     </div>

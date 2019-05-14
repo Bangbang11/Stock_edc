@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 10 Mei 2019 pada 10.51
+-- Generation Time: 14 Mei 2019 pada 10.39
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -68,7 +68,7 @@ CREATE TABLE `edc_in` (
 
 INSERT INTO `edc_in` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
 (1234567891, 'sonic', 'baru', 'available', 'baik', 123456789, 123456789, 'bee mart', 'jl.tralala trilili', 'agen', '2019-05-02', '2019-05-03', 'bpjs'),
-(1234567892, 'sonic', 'baru', 'available', 'baik', 123456789, 123456789, 'bee mart', 'jl.tralala trilili', 'agen', '2019-05-02', '2019-05-03', 'bpjs');
+(1234567892, 'sonic', 'baru', 'available', 'baik', 98796548321, 89879877865, 'seuhah', 'jl.cigerelng cigurulung', '-', '2019-05-02', '2019-05-03', 'PRIMA VISTA');
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `laporan`
 --

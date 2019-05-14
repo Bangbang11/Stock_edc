@@ -58,7 +58,7 @@
   				</ul>
 			</nav>
 		</div>
-<div class="container-fluid" style="margin-bottom: 200px;">
+<div class="container-fluid" style="height: 600px">
 	<content>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
