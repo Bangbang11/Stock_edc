@@ -67,10 +67,12 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="row">
-                    <div class="col-md-2">
-                      
+                    <div class="col-md-3" qqqqq>
+                      <button style="height: 35px;">
+                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
+                      </button>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                       
                     </div>
                     <div class="col-md-7">

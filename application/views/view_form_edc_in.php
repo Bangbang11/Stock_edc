@@ -40,7 +40,7 @@
 			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
   				<ul class="navbar-nav">
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">Kembali</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">Kembali</a>
     				</li>
 
     				

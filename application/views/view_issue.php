@@ -73,11 +73,10 @@
                         <a href='<?php echo site_url();?>/stok_edc/tampil_edc_out' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-plus-square'></i>&nbsp;Tambah Issue</a>
                       </button>
                     </div>
-                    <div class="col-md-3" style="padding-left: 0px;">
-                      <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
-                      </button>
+                    <div class="col-md-3">
+
                     </div>
+
                     <div class="col-md-7">
                       <form>
                         <div class="form-group form-inline">

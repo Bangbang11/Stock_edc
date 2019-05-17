@@ -36,20 +36,20 @@
 		<div>
 			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
   				<ul class="navbar-nav">
-    				<li class="nav-item disable">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc">DASHBOARD</a>
-    				</li>
-    				<li class="nav-item disable">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">ISSUE</a>
-    				</li>
-    				<li class="nav-item active">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">EDC IN</a>
+    				<li class="nav-item">
+      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc">DASHBOARD</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
+      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_issue">ISSUE</a>
+    				</li>
+    				<li class="nav-item active">
+      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">EDC IN</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
     				</li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
+                <a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
             </li>
     				<li style="margin-left: 850px;" class="nav-item">
     					<a class="nav-link" href="#">Logout</a>
