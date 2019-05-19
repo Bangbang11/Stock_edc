@@ -75,7 +75,28 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function baik_replace_issue(){
-
+		$data_baik_replace = $this->Stok_edc_Model->per_idbaik_replace_issue($this->uri->segment(3));
+ 		if(!empty($data_baik_replace)){
+ 			foreach ($data_baik_replace as $data) {
+ 				$id = $data->id;
+ 				$serial_number = $data->serial_number;
+				$tipe_edc = $data->tipe_edc;
+				$kondisi_1 = "bekas";
+				$status_edc = $data->status_edc;
+				$kondisi_edc = $data->kondisi_edc;
+				$mid = $data->mid;
+				$tid = $data->tid;
+				$nama_merchant = $data->nama_merchant;
+				$alamat = $data->alamat_merchant;
+				$digunakan = $data->digunakan;
+				$vendor = $data->vendor;
+				$date_in = $data->date_in;
+				$date_out = $data->date_out;
+				$status_issue = $data->status_issue;
+				$case_issue = $data->case_issue;
+				$this->Stok_edc_Model->baik_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
+ 		}
+ 		}
 	}
 
 	public function baik_done_issue(){
@@ -157,6 +178,11 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function tampil_edc_in_duplicate(){
+		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_duplicate_model();
+		$this->load->view('view_edc_in_duplicate', $tampil_data_edc_in);
+	}
+
+	public function tampil_edc_in_duplicate2(){
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_duplicate_model();
 		$this->load->view('view_edc_in_duplicate', $tampil_data_edc_in);
 	}

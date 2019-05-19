@@ -69,7 +69,9 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-2">
-                      
+                      <button style="height: 35px;">
+                        <a href='#' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-cash-register'></i>&nbsp;Print Laporan</a>
+                      </button>
                     </div>
                     <div class="col-md-3">
                       
