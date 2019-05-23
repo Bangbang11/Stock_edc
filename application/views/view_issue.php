@@ -70,7 +70,7 @@
                   <div class="row">
                     <div class="col-md-2">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/tampil_edc_out' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-plus-square'></i>&nbsp;Tambah Issue</a>
+                        <a href='<?php echo site_url();?>/stok_edc/tampil_edc_out' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-plus-square'></i>&nbsp;Tambah Issue</a>
                       </button>
                     </div>
                     <div class="col-md-3">
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="col-md-7">
-                      <form>
+                      <for method="post" action="<?php echo site_url();?>/stok_edc/cari_issue" enctype="multipart/form-data">
                         <div class="form-group form-inline">
                           <input type="text" name="search" placeholder="Search" class="form-control" style="width: 670px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
                           <input type="submit" value="Cari" class="form-control btn btn-primary" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;">

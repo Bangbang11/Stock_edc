@@ -67,16 +67,18 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="row">
-                    <div class="col-md-3" qqqqq>
+                    <div class="col-md-2">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
+                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
                       </button>
                     </div>
-                    <div class="col-md-2">
-                      
+                    <div class="col-md-3">
+                      <button style="height: 35px;">
+                        <a href='<?php echo site_url();?>/stok_edc/import_edc' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Import dari Excel</a>
+                      </button>
                     </div>
                     <div class="col-md-7">
-                      <form>
+                      <form method="post" action="<?php echo site_url();?>/stok_edc/cari_edc_in" enctype="multipart/form-data">
                         <div class="form-group form-inline">
                           <input type="text" name="search" placeholder="Search" class="form-control" style="width: 670px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
                           <input type="submit" value="Cari" class="form-control btn btn-primary" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;">
@@ -122,6 +124,11 @@
                                    
                             	</tbody>
                         	</table> 
+                          <div class="row">
+                            <div class="col-md-3">
+                              <?php echo $this->pagination->create_links(); ?>
+                            </div>
+                          </div>
   						</div> 
   					<div class="card-footer"></div>
 				</div>

@@ -75,7 +75,7 @@
                       
                     </div>
                     <div class="col-md-7">
-                      <form>
+                      <form method="post" action="<?php echo site_url();?>/stok_edc/cari_edc_out" enctype="multipart/form-data">
                         <div class="form-group form-inline">
                           <input type="text" name="search" placeholder="Search" class="form-control" style="width: 670px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
                           <input type="submit" value="Cari" class="form-control btn btn-primary" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;">

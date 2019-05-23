@@ -44,7 +44,9 @@ class Stok_edc extends CI_Controller
 				$vendor = $data->vendor;
 				$date_in = $data->date_in;
 				$date_out = $data->date_out;
-				$this->Stok_edc_Model->rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out);
+				$status_issue = "done";
+				$case_issue = $data->case_issue;
+				$this->Stok_edc_Model->rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  		}
  		}
 	}
@@ -75,7 +77,28 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function baik_replace_issue(){
-
+		$data_baik_replace = $this->Stok_edc_Model->per_idbaik_replace_issue($this->uri->segment(3));
+ 		if(!empty($data_baik_replace)){
+ 			foreach ($data_baik_replace as $data) {
+ 				$id = $data->id;
+ 				$serial_number = $data->serial_number;
+				$tipe_edc = $data->tipe_edc;
+				$kondisi_1 = "bekas";
+				$status_edc = $data->status_edc;
+				$kondisi_edc = $data->kondisi_edc;
+				$mid = $data->mid;
+				$tid = $data->tid;
+				$nama_merchant = $data->nama_merchant;
+				$alamat = $data->alamat_merchant;
+				$digunakan = $data->digunakan;
+				$vendor = $data->vendor;
+				$date_in = $data->date_in;
+				$date_out = $data->date_out;
+				$status_issue = $data->status_issue;
+				$case_issue = $data->case_issue;
+				$this->Stok_edc_Model->baik_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
+ 		}
+ 		}
 	}
 
 	public function baik_done_issue(){
@@ -96,7 +119,9 @@ class Stok_edc extends CI_Controller
 				$vendor = $data->vendor;
 				$date_in = $data->date_in;
 				$date_out = $data->date_out;
-				$this->Stok_edc_Model->baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out);
+				$status_issue = "done";
+				$case_issue = $data->case_issue;
+				$this->Stok_edc_Model->baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  		}
  		}
 	}
@@ -152,11 +177,28 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function tampil_edc_in(){
-		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_model();
-		$this->load->view('view_edc_in', $tampil_data_edc_in);
+		$this->load->database();
+		$jumlah_data = $this->Stok_edc_Model->jumlah_data();
+		$this->load->library('pagination');
+		$config['base_url'] = 'http://localhost/Aplikasi_Stock_edc/index.php/Stok_edc/tampil_edc_in/';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 1;
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);		
+		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->paging_edc_in_model($config['per_page'],$from);
+		$this->load->view('view_edc_in',$tampil_data_edc_in);
+
+
+		//$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_model();
+		//$this->load->view('view_edc_in', $tampil_data_edc_in);
 	}
 
 	public function tampil_edc_in_duplicate(){
+		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_duplicate_model();
+		$this->load->view('view_edc_in_duplicate', $tampil_data_edc_in);
+	}
+
+	public function tampil_edc_in_duplicate2(){
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_duplicate_model();
 		$this->load->view('view_edc_in_duplicate', $tampil_data_edc_in);
 	}
@@ -265,4 +307,41 @@ class Stok_edc extends CI_Controller
 		$tampil_data_laporan['data_laporan'] = $this->Stok_edc_Model->tampil_laporan_model();
 		$this->load->view('view_laporan', $tampil_data_laporan);
 	}
+
+	public function print_laporan(){
+		ob_start();
+    	$data['siswa'] = "budak";
+    	$this->load->view('print_laporan_pdf', $data);
+    	$html = ob_get_contents();
+        ob_end_clean();
+        
+        require_once('./assets/html2pdf/html2pdf.class.php');
+    	$pdf = new HTML2PDF('P','A4','en');
+    	$pdf->WriteHTML($html);
+    	$pdf->Output('laporan.pdf');
+	}
+
+	public function detail_laporan(){
+		$data['data_laporan'] = $this->Stok_edc_Model->per_iddetail_laporan($this->uri->segment(3));
+ 		$this->load->view('view_detail_laporan', $data);	
+	}
+
+	public function cari_issue(){
+		$keyword = $this->input->post('search');
+		$data['data_issue']=$this->Stok_edc_Model->get_search_issue($keyword);
+		$this->load->view('view_issue',$data);
+	}
+
+	public function cari_edc_in(){
+		$keyword = $this->input->post('search');
+		$data['data_edc_in']=$this->Stok_edc_Model->get_search_in($keyword);
+		$this->load->view('view_edc_in',$data);
+	}
+
+	public function cari_edc_out(){
+		$keyword = $this->input->post('search');
+		$data['data_edc_out']=$this->Stok_edc_Model->get_search_out($keyword);
+		$this->load->view('view_edc_out',$data);
+	}
+
 }

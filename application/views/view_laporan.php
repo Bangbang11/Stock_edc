@@ -69,13 +69,15 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-2">
-                      
+                      <button style="height: 35px;">
+                        <a href='<?php echo site_url();?>/stok_edc/print_laporan' target='_blank' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Print Laporan</a>
+                      </button>
                     </div>
                     <div class="col-md-3">
                       
                     </div>
                     <div class="col-md-7">
-                      <form>
+                      <form method="post" action="<?php echo site_url();?>/stok_edc/cari_laporan" enctype="multipart/form-data">
                         <div class="form-group form-inline">
                           <input type="text" name="search" placeholder="Search" class="form-control" style="width: 670px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
                           <input type="submit" value="Cari" class="form-control btn btn-primary" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;">
@@ -111,7 +113,7 @@
                       <td style='text-align:center; text-transform:capitalize;' data-title='Nama Merchant/agen'><?php echo $data->nama_merchant; ?></td>
                       <td style='text-align:center; text-transform:capitalize;' data-title='Vendor'><?php echo $data->vendor; ?></td>
        								<td style='text-align:center' data-title='aksi_laporan'>
-                    					<a href="" class="label label-warning">
+                    					<a href="<?php echo site_url();?>/stok_edc/detail_laporan/<?php echo $data->id;?>" class="label label-warning">
                     						<i class= 'fas fa-edit'></i>&nbsp;Detail</a>
                     					<a href="" class="label label-danger">
                     						<i class= 'fas fa-trash'></i>&nbsp;Hapus</a>

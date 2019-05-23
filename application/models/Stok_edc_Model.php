@@ -105,12 +105,17 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->query('SELECT * FROM issue WHERE id = "'.$id.'" ')->result();
 	}
 
+	public function per_idbaik_replace_issue($id) {
+		return $this->db->query('SELECT * FROM issue WHERE id = "'.$id.'" ')->result();
+	}
+
 	public function per_idbaik_done_issue($id) {
 		return $this->db->query('SELECT * FROM issue WHERE id = "'.$id.'" ')->result();
 	}
 
-	public function rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
+	public function rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue){
 		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("INSERT INTO laporan (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
 		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
 		header('location:'.site_url().'/stok_edc/tampil_edc_in');
 	}
@@ -123,8 +128,17 @@ class Stok_edc_Model extends CI_Model
 		header('location:'.site_url().'/stok_edc/tampil_edc_in_duplicate');
 	}
 
-	public function baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
+	public function baik_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue){
 		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("DELETE FROM temporary_data");
+		$this->db->query("INSERT INTO temporary_data (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
+		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
+		header('location:'.site_url().'/stok_edc/tampil_edc_in_duplicate2');
+	}
+																																																																																		
+	public function baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue){
+		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("INSERT INTO laporan (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
 		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
 		header('location:'.site_url().'/stok_edc/tampil_edc_in');
 	}
@@ -151,12 +165,48 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->query('SELECT * FROM laporan ORDER BY id ASC')->result();
 	}
 
+	public function per_iddetail_laporan($id){
+		return $this->db->query('SELECT * FROM laporan WHERE id = "'.$id.'" ')->result();
+	}
+
 	public function tampil_issue_model(){
 		return $this->db->query('SELECT * FROM issue ORDER BY id ASC')->result();
 	}
 
 	public function tampil_temporary_data(){
 		return $this->db->query('SELECT * FROM temporary_data')->result();
+	}
+
+	public function get_search_issue($keyword){
+		$this->db->select('*');
+		$this->db->from('issue');
+		$this->db->like('serial_number',$keyword);
+		$this->db->or_like('tipe_edc',$keyword);
+		return $this->db->get()->result();
+	}
+
+	public function get_search_in($keyword){
+		$this->db->select('*');
+		$this->db->from('edc_in');
+		$this->db->like('serial_number',$keyword);
+		$this->db->or_like('tipe_edc',$keyword);
+		return $this->db->get()->result();
+	}
+
+	public function get_search_out($keyword){
+		$this->db->select('*');
+		$this->db->from('edc_out');
+		$this->db->like('serial_number',$keyword);
+		$this->db->or_like('tipe_edc',$keyword);
+		return $this->db->get()->result();
+	}
+
+	public function jumlah_data(){
+		return $this->db->get('edc_in')->num_rows();
+	}
+
+	public function paging_edc_in_model($limit, $start){
+		return $query = $this->db->get('edc_in',$limit,$start)->result();
 	}
 
 }
