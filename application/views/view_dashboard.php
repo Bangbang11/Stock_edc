@@ -13,6 +13,7 @@
 	<script src="<?php echo base_url();?>assets/popper.js/popper.min.js"></script>
 	<script src="<?php echo base_url();?>assets/fontawesome/js/all.js"></script>
 	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/chart/Chart.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -58,14 +59,112 @@
   				</ul>
 			</nav>
 		</div>
-<div class="container-fluid" style="height: 600px">
+<div class="container-fluid" style="height: 700px">
 	<content>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
 				<div class="card">
   					<div class="card-header">Dashboard</div>
   					<div class="card-body">
+  						<div class="row">
+  							<div class="col-md-3">
+  								<div class="row">
+  									<div class="col-md-12"><button style="width: 100px; height: 100px; margin-bottom: 50px"><i class="faS fa-clipboard-list"></i> ISSUE</button></div>
+  								</div>
+  								<div class="row">
+  									<div class="col-md-12"><button style="width: 100px; height: 100px; margin-bottom: 50px"><i class="fas fa-clipboard-list"></i> EDC IN</button></div>
+  								</div>
+  								<div class="row">
+  									<div class="col-md-12"><button style="width: 100px; height: 100px; margin-bottom: 50px"><i class="fas fa-clipboard-list"></i> EDC OUT</button></div>
+  								</div>
+  							</div>
+  							<div class="col-md-9">
+  								<div class="media border p-3">
+
+    								<div class="media-body">
+										<div style="width: 500px;`">
+											<canvas id="myChart"></canvas>
+										</div>
+										<br>
+										<div style="width: 500px;`">
+											<canvas id="myChart2"></canvas>
+										</div>
+    								</div>
+  								</div>
+  								
+  							</div>
+  						</div>
   						
+						<script>
+							var ctx = document.getElementById("myChart").getContext('2d');
+							var myChart = new Chart(ctx, {
+								type: 'bar',
+								data: {
+									labels: ["EDC BAIK", "EDC RUSAK"],
+										datasets: [{
+											label: 'Grafik Jumlah EDC Berdasarkan Kondisi EDC',
+											data: [30, 50],
+											backgroundColor: [
+												'rgba(255, 99, 132, 0.2)',
+												'rgba(255, 159, 64, 0.2)'
+											],
+											borderColor: [
+												'rgba(255,99,132,1)',
+												'rgba(255, 159, 64, 1)'
+											],
+											borderWidth: 1
+											}]
+										},
+									options: {
+										scales: {
+											yAxes: [{
+												ticks: {
+													beginAtZero:true
+												}
+											}]
+										}
+									}
+								});
+					</script>
+
+					<script>
+							var ctx = document.getElementById("myChart2").getContext('2d');
+							var myChart = new Chart(ctx, {
+								type: 'bar',
+								data: {
+									labels: ["ICT220","ICT250","IWC220","MOVE2500","PAXD210"],
+										datasets: [{
+											label: 'Grafik Jumlah EDC dikelompokan Berdasarkan Tipe EDC',
+											data: [12, 19, 3, 23, 2],
+											backgroundColor: [
+												'rgba(255, 99, 132, 0.2)',
+												'rgba(54, 162, 235, 0.2)',
+												'rgba(255, 206, 86, 0.2)',
+												'rgba(75, 192, 192, 0.2)',
+												'rgba(255, 159, 64, 0.2)'
+											],
+											borderColor: [
+												'rgba(255,99,132,1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(255, 159, 64, 1)'
+											],
+											borderWidth: 1
+											}]
+										},
+									options: {
+										scales: {
+											yAxes: [{
+												ticks: {
+													beginAtZero:true
+												}
+											}]
+										}
+									}
+								});
+					</script>
+
   					</div> 
   					<div class="card-footer"></div>
 				</div>
@@ -80,5 +179,7 @@
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>
+
+	
 </body>
 </html>

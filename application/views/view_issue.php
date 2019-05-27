@@ -129,6 +129,11 @@
                                       
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-md-3">
+                              <?php echo $this->pagination->create_links(); ?>
+                            </div>
+                          </div>
   					</div> 
   					<div class="card-footer"></div>
 				</div>

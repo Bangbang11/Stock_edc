@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2019 at 03:49 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: 24 Mei 2019 pada 11.10
+-- Versi Server: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -36,7 +34,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `created_at`) VALUES
@@ -45,7 +43,7 @@ INSERT INTO `admin` (`id`, `username`, `password`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `edc_in`
+-- Struktur dari tabel `edc_in`
 --
 
 CREATE TABLE `edc_in` (
@@ -65,16 +63,17 @@ CREATE TABLE `edc_in` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `edc_in`
+-- Dumping data untuk tabel `edc_in`
 --
 
 INSERT INTO `edc_in` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
+(1234567891, 'PAXD210', 'bekas', 'available', 'rusak', 98796548323, 89879877867, 'seuhah', 'JL.ERERERER', 'Agen', '2019-05-17', '2019-05-18', 'BEPS'),
 (1234567892, 'PAXD210', 'bekas', 'available', 'rusak', 98796548323, 89879877867, 'seuhah', 'JL.ERERERER', 'Agen', '2019-05-17', '2019-05-18', 'BEPS');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `edc_out`
+-- Struktur dari tabel `edc_out`
 --
 
 CREATE TABLE `edc_out` (
@@ -94,17 +93,16 @@ CREATE TABLE `edc_out` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `edc_out`
+-- Dumping data untuk tabel `edc_out`
 --
 
 INSERT INTO `edc_out` (`serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `date_in`, `date_out`, `vendor`) VALUES
-(987654321, 'PAXD210', 'baru', 'available', 'baik', 98796548327, 898798778656, 'dadali manting', 'jl.heulang', 'Merchant', '2019-05-17', '2019-05-18', 'BEPS'),
-(1234567891, 'PAXD210', 'bekas', 'available', 'baik', 98796548323, 89879877867, 'seuhah', 'JL.ERERERER', 'Agen', '2019-05-17', '2019-05-18', 'BEPS');
+(987654321, 'PAXD210', 'baru', 'available', 'baik', 98796548327, 898798778656, 'dadali manting', 'jl.heulang', 'Merchant', '2019-05-17', '2019-05-18', 'BEPS');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `issue`
+-- Struktur dari tabel `issue`
 --
 
 CREATE TABLE `issue` (
@@ -129,39 +127,37 @@ CREATE TABLE `issue` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laporan`
+-- Struktur dari tabel `laporan`
 --
 
 CREATE TABLE `laporan` (
-  `id` int(255) NOT NULL,
+  `id` int(100) NOT NULL,
   `serial_number` bigint(100) NOT NULL,
   `tipe_edc` varchar(100) NOT NULL,
   `kondisi` varchar(50) NOT NULL,
   `status_edc` varchar(50) NOT NULL,
   `kondisi_edc` varchar(50) NOT NULL,
+  `serial_number_pengganti` bigint(100) NOT NULL,
+  `tipe_edc_pengganti` varchar(100) NOT NULL,
+  `kondisi_pengganti` varchar(50) NOT NULL,
+  `status_edc_pengganti` varchar(50) NOT NULL,
+  `kondisi_edc_pengganti` varchar(50) NOT NULL,
   `mid` bigint(100) NOT NULL,
   `tid` bigint(100) NOT NULL,
   `nama_merchant` varchar(100) NOT NULL,
   `alamat_merchant` text NOT NULL,
   `digunakan` varchar(50) NOT NULL,
   `status_issue` varchar(50) NOT NULL,
-  `case_issue` varchar(50) NOT NULL,
+  `case_issue` varchar(100) NOT NULL,
   `vendor` varchar(100) NOT NULL,
   `date_in` date NOT NULL,
   `date_out` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `laporan`
---
-
-INSERT INTO `laporan` (`id`, `serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `status_issue`, `case_issue`, `vendor`, `date_in`, `date_out`) VALUES
-(1, 1234567891, 'PAXD210', 'baru', 'available', 'baik', 12345768, 12345768, 'bee mart', 'jl.tralala trilili', 'merchant', 'proccess', 'error', 'bpjs', '2019-05-02', '2019-05-03');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `temporary_data`
+-- Struktur dari tabel `temporary_data`
 --
 
 CREATE TABLE `temporary_data` (
@@ -184,11 +180,11 @@ CREATE TABLE `temporary_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `temporary_data`
+-- Dumping data untuk tabel `temporary_data`
 --
 
 INSERT INTO `temporary_data` (`id`, `serial_number`, `tipe_edc`, `kondisi`, `status_edc`, `kondisi_edc`, `mid`, `tid`, `nama_merchant`, `alamat_merchant`, `digunakan`, `status_issue`, `case_issue`, `vendor`, `date_in`, `date_out`) VALUES
-(7, 1234567891, 'PAXD210', 'bekas', 'available', 'baik', 98796548323, 89879877867, 'seuhah', 'JL.ERERERER', 'Agen', 'proccess', 'baik replace', 'BEPS', '2019-05-17', '2019-05-18');
+(6, 1234567892, 'sonic', 'bekas', 'available', 'rusak', 98796548323, 89879877867, 'seuhah', 'JL.ERERERER', 'Agen', 'proccess', 'rusak replace', 'BEPS', '2019-05-17', '2019-05-18');
 
 --
 -- Indexes for dumped tables
@@ -239,26 +235,21 @@ ALTER TABLE `temporary_data`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `issue`
 --
 ALTER TABLE `issue`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `temporary_data`
 --
 ALTER TABLE `temporary_data`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-COMMIT;
-
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

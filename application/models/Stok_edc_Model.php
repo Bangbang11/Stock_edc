@@ -134,9 +134,9 @@ class Stok_edc_Model extends CI_Model
 		$this->db->query("INSERT INTO temporary_data (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
 		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
 		header('location:'.site_url().'/stok_edc/tampil_edc_in_duplicate2');
-	}
-																																																																																		
-	public function baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue){
+	}																																																																					
+
+	public function baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
 		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
 		$this->db->query("INSERT INTO laporan (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
 		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
@@ -205,8 +205,24 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->get('edc_in')->num_rows();
 	}
 
+	public function jumlah_data_out(){
+		return $this->db->get('edc_out')->num_rows();
+	}
+
+	public function jumlah_data_issue(){
+		return $this->db->get('issue')->num_rows();
+	}
+
 	public function paging_edc_in_model($limit, $start){
 		return $query = $this->db->get('edc_in',$limit,$start)->result();
+	}
+
+	public function paging_edc_out_model($limit, $start){
+		return $query = $this->db->get('edc_out',$limit,$start)->result();
+	}
+
+	public function paging_issue_model($limit, $start){
+		return $query = $this->db->get('issue',$limit,$start)->result();
 	}
 
 }

@@ -17,8 +17,20 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function tampil_issue(){
-		$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->tampil_issue_model();
-		$this->load->view('view_issue', $tampil_data_issue);
+		$this->load->database();
+		$jumlah_data = $this->Stok_edc_Model->jumlah_data_issue();
+		$this->load->library('pagination');
+		$config['base_url'] = 'http://localhost/Aplikasi_Stock_edc/index.php/Stok_edc/tampil_issue/';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 1;
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);		
+		$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->paging_issue_model($config['per_page'],$from);
+		$this->load->view('view_issue',$tampil_data_issue);
+
+
+		//$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->tampil_issue_model();
+		//$this->load->view('view_issue', $tampil_data_issue);
 	}
 
 	public function detail_issue(){
@@ -251,8 +263,20 @@ class Stok_edc extends CI_Controller
  	}
 
 	public function tampil_edc_out(){
-		$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->tampil_edc_out_model();
-		$this->load->view('view_edc_out', $tampil_data_edc_out);
+		$this->load->database();
+		$jumlah_data = $this->Stok_edc_Model->jumlah_data_out();
+		$this->load->library('pagination');
+		$config['base_url'] = 'http://localhost/Aplikasi_Stock_edc/index.php/Stok_edc/tampil_edc_out/';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 1;
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);		
+		$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->paging_edc_out_model($config['per_page'],$from);
+		$this->load->view('view_edc_out',$tampil_data_edc_out);
+
+
+		//$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->tampil_edc_out_model();
+		//$this->load->view('view_edc_out', $tampil_data_edc_out);
 	}
 
 	public function tambah_edc_out_merchant(){
@@ -310,7 +334,7 @@ class Stok_edc extends CI_Controller
 
 	public function print_laporan(){
 		ob_start();
-    	$data['siswa'] = "budak";
+    	$data['data_laporan_print'] = $this->Stok_edc_Model->tampil_laporan_model();
     	$this->load->view('print_laporan_pdf', $data);
     	$html = ob_get_contents();
         ob_end_clean();
