@@ -16,37 +16,35 @@
 </head>
 <body>
   <h1 style="text-align: center;">APLIKASI STOCK OPNAME EDC BNI</h1>
-<table class="table table-striped table-condensed table-hover cf" id="dataTables-example">
-                            <thead class="cf">
-                                <tr>
-                                    <th style='text-align:center'>Serial Number</th>
-                                    <th style='text-align:center'>Tipe EDC</th>
-                                    <th style='text-align:center'>MID</th>
-                                    <th style='text-align:center'>TID</th>
-                                    <th style='text-align:center'>Kondisi</th>
-                                    <th style='text-align:center'>Tanggal Keluar</th>
-                                    <th style='text-align:center'>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>   
-<?php if(!empty($data_laporan_print)){
-                      foreach($data_laporan_print as $data){ ?>
-<tr>
-                      <td style='text-align:center'  data-title='Serial Number'><?php echo $data->serial_number; ?></td>
-                      <td style='text-align:center'  data-title='Tipe EDC' ><?php echo $data->tipe_edc; ?></td>
-                      <td style='text-align:center' data-title='MID'><?php echo $data->mid; ?></td>
-                      <td style='text-align:center' data-title='TID'><?php echo $data->tid; ?></td>
-                      <td style='text-align:center' data-title='Kondisi'><?php echo $data->kondisi; ?></td>
-                      <td style='text-align:center' data-title='Tanggal Keluar'><?php echo $data->date_out; ?></td>
-                      <td style='text-align:center' data-title='aksi_edc_out'>
-                              
-                          </td>
-                  </tr>
-                        <?php
+  <hr>
+    <table class="table table-striped table-condensed table-hover cf" id="dataTables-example" style="margin-left: 30px;">
+        <thead class="cf">
+            <tr>
+              <th style='text-align:center;padding-right: 50px;padding-bottom: 15px;'>Serial Number</th>
+              <th style='text-align:center;padding-right: 50px;padding-bottom: 15px;'>Tipe EDC</th>
+              <th style='text-align:center;padding-right: 50px;padding-bottom: 15px;'>MID</th>
+              <th style='text-align:center;padding-right: 50px;padding-bottom: 15px;'>TID</th>
+              <th style='text-align:center;padding-right: 50px;padding-bottom: 15px;'>Kondisi</th>
+              <th style='text-align:center;padding-right: 50px;padding-bottom: 15px;'>Tanggal Keluar</th>
+            </tr>
+        </thead>
+        <br>
+        <tbody>   
+          <?php if(!empty($data_laporan_print)){
+            foreach($data_laporan_print as $data){ ?>
+            <tr>
+              <td style='text-align:center;padding-right: 50px;'  data-title='Serial Number'><?php echo $data->serial_number; ?></td>
+              <td style='text-align:center;padding-right: 50px;'  data-title='Tipe EDC' ><?php echo $data->tipe_edc; ?></td>
+              <td style='text-align:center;padding-right: 50px;' data-title='MID'><?php echo $data->mid; ?></td>
+              <td style='text-align:center;padding-right: 50px;' data-title='TID'><?php echo $data->tid; ?></td>
+              <td style='text-align:center;padding-right: 50px;' data-title='Kondisi'><?php echo $data->kondisi; ?></td>
+              <td style='text-align:center;padding-right: 50px;' data-title='Tanggal Keluar'><?php echo $data->date_out; ?></td>
+            </tr>
+            <?php
                 }
               }
-                ?>
-                </tbody>
-                        </table>
+            ?>
+        </tbody>
+      </table>
 </body>
 </html>

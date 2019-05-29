@@ -70,7 +70,7 @@
                   <div class="row">
                     <div class="col-md-2">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/print_laporan' target='_blank' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Print Laporan</a>
+                        <a href='<?php echo site_url();?>/stok_edc/print_laporan' target='_blank' class="btn btn-light" style="padding-top: 0px; font-size: 14px;"><i class='fas fa-print'></i>&nbsp;Print Laporan</a>
                       </button>
                     </div>
                     <div class="col-md-3">

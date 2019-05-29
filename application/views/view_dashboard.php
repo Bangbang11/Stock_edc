@@ -59,7 +59,7 @@
   				</ul>
 			</nav>
 		</div>
-<div class="container-fluid" style="height: 700px">
+<div class="container-fluid">
 	<content>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
@@ -69,13 +69,13 @@
   						<div class="row">
   							<div class="col-md-3">
   								<div class="row">
-  									<div class="col-md-12"><button style="width: 100px; height: 100px; margin-bottom: 50px"><i class="faS fa-clipboard-list"></i> ISSUE</button></div>
+  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><i class="fas fa-clipboard-list"></i> ISSUE</button></div>
   								</div>
   								<div class="row">
-  									<div class="col-md-12"><button style="width: 100px; height: 100px; margin-bottom: 50px"><i class="fas fa-clipboard-list"></i> EDC IN</button></div>
+  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><i class="fas fa-clipboard-list"></i> EDC IN</button></div>
   								</div>
   								<div class="row">
-  									<div class="col-md-12"><button style="width: 100px; height: 100px; margin-bottom: 50px"><i class="fas fa-clipboard-list"></i> EDC OUT</button></div>
+  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><i class="fas fa-clipboard-list"></i> EDC OUT</button></div>
   								</div>
   							</div>
   							<div class="col-md-9">
@@ -103,7 +103,7 @@
 									labels: ["EDC BAIK", "EDC RUSAK"],
 										datasets: [{
 											label: 'Grafik Jumlah EDC Berdasarkan Kondisi EDC',
-											data: [30, 50],
+											data: [<?php echo $edc_baik;?>, <?php echo $edc_rusak;?>],
 											backgroundColor: [
 												'rgba(255, 99, 132, 0.2)',
 												'rgba(255, 159, 64, 0.2)'
@@ -135,7 +135,7 @@
 									labels: ["ICT220","ICT250","IWC220","MOVE2500","PAXD210"],
 										datasets: [{
 											label: 'Grafik Jumlah EDC dikelompokan Berdasarkan Tipe EDC',
-											data: [12, 19, 3, 23, 2],
+											data: [<?php echo $edc_ict220;?>, <?php echo $edc_ict250;?>, <?php echo $edc_iwc220;?>, <?php echo $edc_move2500; ?>, <?php echo $edc_paxd210; ?>],
 											backgroundColor: [
 												'rgba(255, 99, 132, 0.2)',
 												'rgba(54, 162, 235, 0.2)',

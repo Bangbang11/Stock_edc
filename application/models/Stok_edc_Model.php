@@ -225,4 +225,32 @@ class Stok_edc_Model extends CI_Model
 		return $query = $this->db->get('issue',$limit,$start)->result();
 	}
 
+	public function edc_baik(){
+		return $this->db->query('SELECT * FROM edc_in WHERE kondisi_edc = "baik" ')->result();
+	}
+
+	public function edc_rusak(){
+		return $this->db->query('SELECT * FROM edc_in WHERE kondisi_edc = "rusak" ')->result();
+	}
+
+	public function edc_ict220(){
+		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "ICT220" ')->result();
+	}
+
+	public function edc_ict250(){
+		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "ICT250" ')->result();
+	}
+
+	public function edc_iwc220(){
+		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "IWC220" ')->result();
+	}
+
+	public function edc_move2500(){
+		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "MOVE2500" ')->result();
+	}
+
+	public function edc_paxd210(){
+		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "PAXD210" ')->result();
+	}
+
 }

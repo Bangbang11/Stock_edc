@@ -69,12 +69,12 @@
                   <div class="row">
                     <div class="col-md-2">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
+                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class="btn btn-light" style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
                       </button>
                     </div>
                     <div class="col-md-3">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/import_edc' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Import dari Excel</a>
+                        <a href='<?php echo site_url();?>/stok_edc/import_edc' class="btn btn-light" style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Import dari Excel</a>
                       </button>
                     </div>
                     <div class="col-md-7">

@@ -13,7 +13,21 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function index(){
-		$this->load->view('view_dashboard');
+		$data_edc_baik = $this->Stok_edc_Model->edc_baik();
+		$data_edc_rusak = $this->Stok_edc_Model->edc_rusak();
+		$data_edc_ICT220 = $this->Stok_edc_Model->edc_ict220();
+		$data_edc_ICT250 = $this->Stok_edc_Model->edc_ict250();
+		$data_edc_IWC220 = $this->Stok_edc_Model->edc_iwc220();
+		$data_edc_MOVE2500 = $this->Stok_edc_Model->edc_move2500();
+		$data_edc_PAXD210 = $this->Stok_edc_Model->edc_paxd210();
+		$jumlah['edc_baik'] = count($data_edc_baik);
+		$jumlah['edc_rusak'] = count($data_edc_rusak);
+		$jumlah['edc_ict220'] = count($data_edc_ICT220);
+		$jumlah['edc_ict250'] = count($data_edc_ICT250);
+		$jumlah['edc_iwc220'] = count($data_edc_IWC220);
+		$jumlah['edc_move2500'] = count($data_edc_MOVE2500);
+		$jumlah['edc_paxd210'] = count($data_edc_PAXD210);
+		$this->load->view('view_dashboard', $jumlah);
 	}
 
 	public function tampil_issue(){
@@ -28,9 +42,6 @@ class Stok_edc extends CI_Controller
 		$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->paging_issue_model($config['per_page'],$from);
 		$this->load->view('view_issue',$tampil_data_issue);
 
-
-		//$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->tampil_issue_model();
-		//$this->load->view('view_issue', $tampil_data_issue);
 	}
 
 	public function detail_issue(){
@@ -200,9 +211,6 @@ class Stok_edc extends CI_Controller
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->paging_edc_in_model($config['per_page'],$from);
 		$this->load->view('view_edc_in',$tampil_data_edc_in);
 
-
-		//$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_model();
-		//$this->load->view('view_edc_in', $tampil_data_edc_in);
 	}
 
 	public function tampil_edc_in_duplicate(){
@@ -274,9 +282,6 @@ class Stok_edc extends CI_Controller
 		$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->paging_edc_out_model($config['per_page'],$from);
 		$this->load->view('view_edc_out',$tampil_data_edc_out);
 
-
-		//$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->tampil_edc_out_model();
-		//$this->load->view('view_edc_out', $tampil_data_edc_out);
 	}
 
 	public function tambah_edc_out_merchant(){

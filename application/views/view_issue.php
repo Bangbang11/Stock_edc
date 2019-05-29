@@ -70,7 +70,7 @@
                   <div class="row">
                     <div class="col-md-2">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/tampil_edc_out' class='btn btn-succes' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-plus-square'></i>&nbsp;Tambah Issue</a>
+                        <a href='<?php echo site_url();?>/stok_edc/tampil_edc_out' class='btn btn-light' style="padding-top: 0px; font-size: 14px;"><i class='fas fa-plus-square'></i>&nbsp;Tambah Issue</a>
                       </button>
                     </div>
                     <div class="col-md-3">
