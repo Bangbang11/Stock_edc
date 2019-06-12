@@ -34,7 +34,7 @@ class Stok_edc extends CI_Controller
 		$this->load->database();
 		$jumlah_data = $this->Stok_edc_Model->jumlah_data_issue();
 		$this->load->library('pagination');
-		$config['base_url'] = 'http://localhost/Aplikasi_Stock_edc/index.php/Stok_edc/tampil_issue/';
+		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_issue/';
 		$config['total_rows'] = $jumlah_data;
 		$config['per_page'] = 1;
 		$from = $this->uri->segment(3);
@@ -95,7 +95,7 @@ class Stok_edc extends CI_Controller
 				$status_issue = $data->status_issue;
 				$case_issue = $data->case_issue;
 				$this->Stok_edc_Model->rusak_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
- 		}
+ 			}
  		}
 	}
 
@@ -120,7 +120,7 @@ class Stok_edc extends CI_Controller
 				$status_issue = $data->status_issue;
 				$case_issue = $data->case_issue;
 				$this->Stok_edc_Model->baik_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
- 		}
+ 			}
  		}
 	}
 
@@ -145,7 +145,7 @@ class Stok_edc extends CI_Controller
 				$status_issue = "done";
 				$case_issue = $data->case_issue;
 				$this->Stok_edc_Model->baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
- 		}
+ 			}
  		}
 	}
 
@@ -203,7 +203,7 @@ class Stok_edc extends CI_Controller
 		$this->load->database();
 		$jumlah_data = $this->Stok_edc_Model->jumlah_data();
 		$this->load->library('pagination');
-		$config['base_url'] = 'http://localhost/Aplikasi_Stock_edc/index.php/Stok_edc/tampil_edc_in/';
+		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_edc_in/';
 		$config['total_rows'] = $jumlah_data;
 		$config['per_page'] = 1;
 		$from = $this->uri->segment(3);
@@ -230,12 +230,6 @@ class Stok_edc extends CI_Controller
 		$this->form_validation->set_rules('kondisi_1', 'kondisi_1', 'trim|required');
 		$this->form_validation->set_rules('status_edc', 'status_edc', 'trim|required');
 		$this->form_validation->set_rules('kondisi_edc', 'kondisi_edc', 'trim|required');
-		$this->form_validation->set_rules('mid', 'mid', 'trim|required');
-		$this->form_validation->set_rules('tid', 'tid', 'trim|required');
-		$this->form_validation->set_rules('nama_merchant', 'nama_merchant', 'trim|required');
-		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
-		$this->form_validation->set_rules('digunakan', 'digunakan', 'trim|required');
-		$this->form_validation->set_rules('vendor', 'vendor', 'trim|required');
 		$this->form_validation->set_rules('date_in', 'date_in', 'trim|required');
 		$this->form_validation->set_rules('date_out', 'date_out', 'trim|required');
 
@@ -247,15 +241,9 @@ class Stok_edc extends CI_Controller
 			$kondisi_1 = $this->input->post('kondisi_1');
 			$status_edc = $this->input->post('status_edc');
 			$kondisi_edc = $this->input->post('kondisi_edc');
-			$mid = $this->input->post('mid');
-			$tid = $this->input->post('tid');
-			$nama_merchant = $this->input->post('nama_merchant');
-			$alamat = $this->input->post('alamat');
-			$digunakan = $this->input->post('digunakan');
-			$vendor = $this->input->post('vendor');
 			$date_in = $this->input->post('date_in');
 			$date_out = $this->input->post('date_out');
-			$this->Stok_edc_Model->tambah_edc_in($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out);
+			$this->Stok_edc_Model->tambah_edc_in($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $date_in,$date_out);
  		}
  	}
 
@@ -274,7 +262,7 @@ class Stok_edc extends CI_Controller
 		$this->load->database();
 		$jumlah_data = $this->Stok_edc_Model->jumlah_data_out();
 		$this->load->library('pagination');
-		$config['base_url'] = 'http://localhost/Aplikasi_Stock_edc/index.php/Stok_edc/tampil_edc_out/';
+		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_edc_out/';
 		$config['total_rows'] = $jumlah_data;
 		$config['per_page'] = 1;
 		$from = $this->uri->segment(3);
@@ -324,6 +312,47 @@ class Stok_edc extends CI_Controller
 			$date_in = $this->input->post('date_in');
 			$date_out = $this->input->post('date_out');
 			$this->Stok_edc_Model->tambah_edc_out($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out);
+ 		}
+	}
+
+	public function tambah_edc_out_duplicate(){
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('mid', 'mid', 'trim|required');
+		$this->form_validation->set_rules('tid', 'tid', 'trim|required');
+		$this->form_validation->set_rules('nama_merchant', 'nama_merchant', 'trim|required');
+		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
+		$this->form_validation->set_rules('digunakan', 'digunakan', 'trim|required');
+		$this->form_validation->set_rules('vendor', 'vendor', 'trim|required');
+		$this->form_validation->set_rules('date_in', 'date_in', 'trim|required');
+		$this->form_validation->set_rules('date_out', 'date_out', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE ) {
+			redirect('Stok_edc/tambah_edc_out_merchant');
+		} else {
+			$serial_number_pengganti = $this->input->post('serial_number');
+			$tipe_edc_pengganti = $this->input->post('tipe_edc');
+			$kondisi_1_pengganti = $this->input->post('kondisi_1');
+			$status_edc_pengganti = $this->input->post('status_edc');
+			$kondisi_edc_pengganti = $this->input->post('kondisi_edc');
+			$mid = $this->input->post('mid');
+			$tid = $this->input->post('tid');
+			$nama_merchant = $this->input->post('nama_merchant');
+			$alamat = $this->input->post('alamat');
+			$digunakan = $this->input->post('digunakan');
+			$vendor = $this->input->post('vendor');
+			$date_in = $this->input->post('date_in');
+			$date_out = $this->input->post('date_out');
+			$data_temporary = $this->Stok_edc_Model->tampil_temporary_data();
+			foreach ($data_temporary as $data) {
+ 				$serial_number = $data->serial_number;
+				$tipe_edc = $data->tipe_edc;
+				$kondisi_1 = $data->kondisi;
+				$status_edc = $data->status_edc;
+				$kondisi_edc = $data->kondisi_edc;
+				$status_issue = "done";
+				$case_issue = $data->case_issue;
+ 		}			
+			$this->Stok_edc_Model->tambah_edc_out_duplicate($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc,$serial_number_pengganti, $tipe_edc_pengganti, $kondisi_1_pengganti, $status_edc_pengganti, $kondisi_edc_pengganti, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  		}
 	}
 

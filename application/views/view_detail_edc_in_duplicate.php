@@ -55,7 +55,7 @@
             <div class="card-header">Tambah EDC OUT</div>
             <div class="card-body">
               <br>
-              <form method="post" action="<?php echo site_url();?>/stok_edc/tambah_edc_out" enctype="multipart/form-data">
+              <form method="post" action="<?php echo site_url();?>/stok_edc/tambah_edc_out_duplicate" enctype="multipart/form-data">
                 <?php 
                   if(!empty($data_edc_in)) {
                     foreach($data_edc_in as $data) {

@@ -113,64 +113,6 @@
                     </div>
                 </div>
                 <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">MID</label>
-                    <div class="col-sm-10">
-                      <div class="f">
-                        : <input type="text" class="form-control" name="mid" placeholder="MID" style="width: 1000px;">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">TID</label>
-                    <div class="col-sm-10">
-                      <div class="f">
-                        : <input type="text" class="form-control" name="tid" placeholder="TID" style="width: 1000px;" >
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">Nama Merchant/Agen</label>
-                    <div class="col-sm-10">
-                      <div class="f">
-                        : <input type="text" class="form-control" name="nama_merchant" placeholder="Nama Merchant/Agen"  style="width: 1000px;">
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">Alamat Merchant/Agen</label>
-                    <div class="col-sm-10">
-                      <div class="f"> 
-                        : <textarea rows="5" cols="30" class="form-control" name="alamat" placeholder="Alamat Merchant/Agen" style="width: 1000px;"></textarea> 
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label">Digunakan</label>
-                    <div class="col-sm-10">
-                      <div class="f"> 
-                        : <select name="digunakan" class="form-control" style="width: 1000px;">
-                          <option value="-">-</option>
-                          <option value="Merchant">Merchant</option>
-                          <option value="agen">Agen</option>
-                        </select>
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                  <label class="col-sm-2 control-label" >Vendor</label>
-                    <div class="col-sm-10">
-                      <div class="f"> 
-                        : <select name="vendor" class="form-control" style="width: 1000px;">
-                          <option value="-">-</option>
-                          <option value="VISIONET">VISIONET</option>
-                          <option value="BEPS">BEPS</option>
-                          <option value="PRIMA VISTA">PRIMA VISTA</option>
-                          <option value="INGENICO">INGENICO</option>
-                        </select>
-                      </div>
-                    </div>
-                </div>
-                <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Tanggal Masuk</label>
                     <div class="col-sm-10">
                       <div class="f"> 

@@ -88,8 +88,8 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->query('SELECT * FROM  edc_in WHERE kondisi_edc = "baik" ')->result();
 	}
 
-	public function tambah_edc_in($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
-		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+	public function tambah_edc_in($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $date_in,$date_out){
+		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$date_in."', '".$date_out."')");
 		header('location:'.site_url().'/stok_edc/tampil_edc_in');
 	}
 
@@ -158,6 +158,13 @@ class Stok_edc_Model extends CI_Model
 	public function tambah_edc_out($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
 		$this->db->query("INSERT INTO edc_out (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
 		$this->db->query("DELETE FROM edc_in WHERE serial_number = '".$serial_number."'");
+		header('location:'.site_url().'/stok_edc/tampil_edc_out');
+	}
+
+	public function tambah_edc_out_duplicate($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc,$serial_number_pengganti, $tipe_edc_pengganti, $kondisi_1_pengganti, $status_edc_pengganti, $kondisi_edc_pengganti, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
+		$this->db->query("INSERT INTO edc_out (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number_pengganti."', '".$tipe_edc_pengganti."', '".$kondisi_1_pengganti."', '".$status_edc_pengganti."', '".$kondisi_edc_pengganti."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("INSERT INTO laporan (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, serial_number_pengganti, tipe_edc_pengganti, kondisi_pengganti, status_edc_pengganti, kondisi_edc_pengganti, mid, tid, nama_merchant, alamat_merchant, digunakan,  status_issue, case_issue, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$serial_number_pengganti."', '".$tipe_edc_pengganti."', '".$kondisi_1_pengganti."', '".$status_edc_pengganti."', '".$kondisi_edc_pengganti."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$status_issue."', '".$case_issue."','".$vendor."', '".$date_in."', '".$date_out."')");
+		$this->db->query("DELETE FROM edc_in WHERE serial_number = '".$serial_number_pengganti."'");
 		header('location:'.site_url().'/stok_edc/tampil_edc_out');
 	}
 
