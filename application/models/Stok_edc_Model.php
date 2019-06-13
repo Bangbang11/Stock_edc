@@ -260,4 +260,8 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "PAXD210" ')->result();
 	}
 
+	public function insert($data){
+		$this->db->insert_batch('edc_in',$data);
+	}
+
 }

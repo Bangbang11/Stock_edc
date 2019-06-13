@@ -69,13 +69,13 @@
   						<div class="row">
   							<div class="col-md-3">
   								<div class="row">
-  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><i class="fas fa-clipboard-list"></i> ISSUE</button></div>
+  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><a href="<?php echo site_url();?>/stok_edc/tampil_issue" style="text-decoration: none;color: white;" ><i class="fas fa-clipboard-list"></i> ISSUE</a></button></div>
   								</div>
   								<div class="row">
-  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><i class="fas fa-clipboard-list"></i> EDC IN</button></div>
+  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><a href="<?php echo site_url();?>/stok_edc/tampil_edc_in" style="text-decoration: none;color: white;"><i class="fas fa-clipboard-list"></i> EDC IN</a></button></div>
   								</div>
   								<div class="row">
-  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><i class="fas fa-clipboard-list"></i> EDC OUT</button></div>
+  									<div class="col-md-12"><button class="btn btn-success" style="width: 100px; height: 100px; margin-bottom: 50px;margin-left: 70px;margin-top: 50px;"><a href="<?php echo site_url();?>/stok_edc/tampil_edc_out" style="text-decoration: none;color: white;"><i class="fas fa-clipboard-list"></i> EDC OUT</a></button></div>
   								</div>
   							</div>
   							<div class="col-md-9">

@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-md-3">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/import_edc' class="btn btn-light" style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Import dari Excel</a>
+                        <a href='<?php echo site_url();?>/stok_edc/tampil_import' class="btn btn-light" style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Import dari Excel</a>
                       </button>
                     </div>
                     <div class="col-md-7">

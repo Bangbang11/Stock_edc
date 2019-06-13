@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="image/png" rel="icon" href="<?php echo base_url();?>assets/logo/icon2.png">
 	
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link href="<?php echo base_url();?>assets/fontawesome/css/all.css" rel="stylesheet">

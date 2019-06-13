@@ -10,9 +10,13 @@ class Stok_edc extends CI_Controller
 		parent::__construct();
 		$this->load->helper("form"); 
 		$this->load->helper("url");
+		$this->load->library("excel");
 	}
 
 	public function index(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data_edc_baik = $this->Stok_edc_Model->edc_baik();
 		$data_edc_rusak = $this->Stok_edc_Model->edc_rusak();
 		$data_edc_ICT220 = $this->Stok_edc_Model->edc_ict220();
@@ -28,9 +32,15 @@ class Stok_edc extends CI_Controller
 		$jumlah['edc_move2500'] = count($data_edc_MOVE2500);
 		$jumlah['edc_paxd210'] = count($data_edc_PAXD210);
 		$this->load->view('view_dashboard', $jumlah);
+		} else {
+			header('location:'.base_url().'login');
+		}
 	}
 
 	public function tampil_issue(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->database();
 		$jumlah_data = $this->Stok_edc_Model->jumlah_data_issue();
 		$this->load->library('pagination');
@@ -41,6 +51,9 @@ class Stok_edc extends CI_Controller
 		$this->pagination->initialize($config);		
 		$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->paging_issue_model($config['per_page'],$from);
 		$this->load->view('view_issue',$tampil_data_issue);
+		} else {
+			header('location:'.base_url().'login');
+		}
 
 	}
 
@@ -200,16 +213,22 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function tampil_edc_in(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->database();
 		$jumlah_data = $this->Stok_edc_Model->jumlah_data();
 		$this->load->library('pagination');
 		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_edc_in/';
 		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 1;
+		$config['per_page'] = 4;
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);		
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->paging_edc_in_model($config['per_page'],$from);
 		$this->load->view('view_edc_in',$tampil_data_edc_in);
+		} else {
+			header('location:'.base_url().'login');
+		}
 
 	}
 
@@ -259,6 +278,9 @@ class Stok_edc extends CI_Controller
  	}
 
 	public function tampil_edc_out(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->database();
 		$jumlah_data = $this->Stok_edc_Model->jumlah_data_out();
 		$this->load->library('pagination');
@@ -269,6 +291,9 @@ class Stok_edc extends CI_Controller
 		$this->pagination->initialize($config);		
 		$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->paging_edc_out_model($config['per_page'],$from);
 		$this->load->view('view_edc_out',$tampil_data_edc_out);
+		} else {
+			header('location:'.base_url().'login');
+		}
 
 	}
 
@@ -362,8 +387,14 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function tampil_laporan(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$tampil_data_laporan['data_laporan'] = $this->Stok_edc_Model->tampil_laporan_model();
 		$this->load->view('view_laporan', $tampil_data_laporan);
+		} else {
+			header('location:'.base_url().'login');
+		}
 	}
 
 	public function print_laporan(){
@@ -381,7 +412,7 @@ class Stok_edc extends CI_Controller
 
 	public function detail_laporan(){
 		$data['data_laporan'] = $this->Stok_edc_Model->per_iddetail_laporan($this->uri->segment(3));
- 		$this->load->view('view_detail_laporan', $data);	
+ 		$this->load->view('view_detail_laporan', $data);
 	}
 
 	public function cari_issue(){
@@ -400,6 +431,44 @@ class Stok_edc extends CI_Controller
 		$keyword = $this->input->post('search');
 		$data['data_edc_out']=$this->Stok_edc_Model->get_search_out($keyword);
 		$this->load->view('view_edc_out',$data);
+	}
+
+	public function tampil_import(){
+		$this->load->view('view_import_excel');
+	}
+
+	public function import(){
+		if (isset($_FILES['file']['name'])) 
+		{
+			$path = $_FILES['file']['tmp_name'];
+			$object = PHPExcel_IOFactory::load($path);
+			foreach ($object->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();
+				for ($row=2; $row <= $highestRow ; $row++) 
+				{ 
+					$serial_number = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+					$tipe_edc = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					$kondisi = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+					$status_edc = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$kondisi_edc = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$date_in = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$date_out = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+					$data[] = array(
+						'serial_number' => $serial_number,
+						'tipe_edc' => $tipe_edc,
+						'kondisi' => $kondisi,
+						'status_edc' => $status_edc,
+						'kondisi_edc' => $kondisi_edc,
+						'date_in' => $date_in,
+						'date_out' => $date_out
+					);
+				}
+			}
+			$this->Stok_edc_Model->insert($data);
+			header('location:'.site_url().'/stok_edc/tampil_edc_in');
+		}
 	}
 
 }
