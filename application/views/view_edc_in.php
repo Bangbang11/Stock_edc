@@ -52,7 +52,7 @@
                 <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
             </li>
     				<li style="margin-left: 850px;" class="nav-item">
-    					<a class="nav-link" href="#">Logout</a>
+    					<a class="nav-link" href="<?php echo site_url();?>/login/logout">Logout</a>
     				</li>
   				</ul>
 			</nav>

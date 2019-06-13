@@ -33,7 +33,7 @@ class Stok_edc extends CI_Controller
 		$jumlah['edc_paxd210'] = count($data_edc_PAXD210);
 		$this->load->view('view_dashboard', $jumlah);
 		} else {
-			header('location:'.base_url().'login');
+			header('location:'.site_url().'/login');
 		}
 	}
 
@@ -46,23 +46,32 @@ class Stok_edc extends CI_Controller
 		$this->load->library('pagination');
 		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_issue/';
 		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 1;
+		$config['per_page'] = 10;
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);		
 		$tampil_data_issue['data_issue'] = $this->Stok_edc_Model->paging_issue_model($config['per_page'],$from);
 		$this->load->view('view_issue',$tampil_data_issue);
 		} else {
-			header('location:'.base_url().'login');
+			header('location:'.site_url().'/login');
 		}
 
 	}
 
 	public function detail_issue(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data['data_issue'] = $this->Stok_edc_Model->per_iddetail_issue($this->uri->segment(3));
  		$this->load->view('view_detail_issue', $data);
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function rusak_done_issue() {
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data_rusak_done = $this->Stok_edc_Model->per_idrusak_done_issue($this->uri->segment(3));
  		if(!empty($data_rusak_done)){
  			foreach ($data_rusak_done as $data) {
@@ -85,9 +94,15 @@ class Stok_edc extends CI_Controller
 				$this->Stok_edc_Model->rusak_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  		}
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function rusak_replace_issue(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data_rusak_replace = $this->Stok_edc_Model->per_idrusak_replace_issue($this->uri->segment(3));
  		if(!empty($data_rusak_replace)){
  			foreach ($data_rusak_replace as $data) {
@@ -110,9 +125,15 @@ class Stok_edc extends CI_Controller
 				$this->Stok_edc_Model->rusak_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  			}
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function baik_replace_issue(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data_baik_replace = $this->Stok_edc_Model->per_idbaik_replace_issue($this->uri->segment(3));
  		if(!empty($data_baik_replace)){
  			foreach ($data_baik_replace as $data) {
@@ -135,9 +156,15 @@ class Stok_edc extends CI_Controller
 				$this->Stok_edc_Model->baik_replace($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  			}
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function baik_done_issue(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data_baik_done = $this->Stok_edc_Model->per_idbaik_done_issue($this->uri->segment(3));
  		if(!empty($data_baik_done)){
  			foreach ($data_baik_done as $data) {
@@ -160,9 +187,15 @@ class Stok_edc extends CI_Controller
 				$this->Stok_edc_Model->baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  			}
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tambah_issue_out(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 
 		$data['serial_number'] = $this->input->post('serial_number');
 		$data['tipe_edc'] = $this->input->post('tipe_edc');
@@ -179,9 +212,15 @@ class Stok_edc extends CI_Controller
 		$data['date_out'] = $this->input->post('date_out');
 
 		$this->load->view('view_tambah_field_issue',$data);
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tambah_issue(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('status_issue', 'status_issue', 'trim|required');
 		$this->form_validation->set_rules('case_issue', 'case_issue', 'trim|required');
@@ -206,10 +245,19 @@ class Stok_edc extends CI_Controller
 			$case_issue = $this->input->post('case_issue');
 			$this->Stok_edc_Model->tambah_issue($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out,$status_issue,$case_issue);
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function form_edc_in(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->view('view_form_edc_in');
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tampil_edc_in(){
@@ -221,28 +269,43 @@ class Stok_edc extends CI_Controller
 		$this->load->library('pagination');
 		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_edc_in/';
 		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 4;
+		$config['per_page'] = 10;
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);		
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->paging_edc_in_model($config['per_page'],$from);
 		$this->load->view('view_edc_in',$tampil_data_edc_in);
 		} else {
-			header('location:'.base_url().'login');
+			header('location:'.site_url().'/login');
 		}
 
 	}
 
 	public function tampil_edc_in_duplicate(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_duplicate_model();
 		$this->load->view('view_edc_in_duplicate', $tampil_data_edc_in);
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tampil_edc_in_duplicate2(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$tampil_data_edc_in['data_edc_in'] = $this->Stok_edc_Model->tampil_edc_in_duplicate_model();
 		$this->load->view('view_edc_in_duplicate', $tampil_data_edc_in);
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tambah_edc_in(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('serial_number', 'serial_number', 'trim|required');
 		$this->form_validation->set_rules('tipe_edc', 'tipe_edc', 'trim|required');
@@ -264,17 +327,32 @@ class Stok_edc extends CI_Controller
 			$date_out = $this->input->post('date_out');
 			$this->Stok_edc_Model->tambah_edc_in($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $date_in,$date_out);
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
  	}
 
  	public function detail_edc_in(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
  		$data['data_edc_in'] = $this->Stok_edc_Model->per_iddetail_edc_in($this->uri->segment(3));
  		$this->load->view('view_detail_edc_in', $data);
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
  	}
 
  	public function detail_edc_in_duplicate(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
  		$data['data_edc_in'] = $this->Stok_edc_Model->per_iddetail_edc_in($this->uri->segment(3));
  		$data['data_temporary'] = $this->Stok_edc_Model->tampil_temporary_data();
  		$this->load->view('view_detail_edc_in_duplicate', $data);
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
  	}
 
 	public function tampil_edc_out(){
@@ -286,18 +364,21 @@ class Stok_edc extends CI_Controller
 		$this->load->library('pagination');
 		$config['base_url'] = 'http://localhost/Stock_edc/index.php/Stok_edc/tampil_edc_out/';
 		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 1;
+		$config['per_page'] = 10;
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);		
 		$tampil_data_edc_out['data_edc_out'] = $this->Stok_edc_Model->paging_edc_out_model($config['per_page'],$from);
 		$this->load->view('view_edc_out',$tampil_data_edc_out);
 		} else {
-			header('location:'.base_url().'login');
+			header('location:'.site_url().'/login');
 		}
 
 	}
 
 	public function tambah_edc_out_merchant(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data['serial_number'] = $this->input->post('serial_number');
 		$data['tipe_edc'] = $this->input->post('tipe_edc');
 		$data['kondisi_1'] = $this->input->post('kondisi_1');
@@ -307,9 +388,15 @@ class Stok_edc extends CI_Controller
 		$data['date_out'] = $this->input->post('date_out');
 
 		$this->load->view('view_tambah_field_edc_in',$data);
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tambah_edc_out(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('mid', 'mid', 'trim|required');
 		$this->form_validation->set_rules('tid', 'tid', 'trim|required');
@@ -338,9 +425,15 @@ class Stok_edc extends CI_Controller
 			$date_out = $this->input->post('date_out');
 			$this->Stok_edc_Model->tambah_edc_out($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out);
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tambah_edc_out_duplicate(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('mid', 'mid', 'trim|required');
 		$this->form_validation->set_rules('tid', 'tid', 'trim|required');
@@ -379,11 +472,20 @@ class Stok_edc extends CI_Controller
  		}			
 			$this->Stok_edc_Model->tambah_edc_out_duplicate($serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc,$serial_number_pengganti, $tipe_edc_pengganti, $kondisi_1_pengganti, $status_edc_pengganti, $kondisi_edc_pengganti, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue);
  		}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function detail_edc_out() {
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data['data_edc_out'] = $this->Stok_edc_Model->per_iddetail_edc_out($this->uri->segment(3));
 		$this->load->view('view_detail_edc_out', $data);
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function tampil_laporan(){
@@ -393,11 +495,14 @@ class Stok_edc extends CI_Controller
 		$tampil_data_laporan['data_laporan'] = $this->Stok_edc_Model->tampil_laporan_model();
 		$this->load->view('view_laporan', $tampil_data_laporan);
 		} else {
-			header('location:'.base_url().'login');
+			header('location:'.site_url().'/login');
 		}
 	}
 
 	public function print_laporan(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		ob_start();
     	$data['data_laporan_print'] = $this->Stok_edc_Model->tampil_laporan_model();
     	$this->load->view('print_laporan_pdf', $data);
@@ -408,11 +513,20 @@ class Stok_edc extends CI_Controller
     	$pdf = new HTML2PDF('P','A4','en');
     	$pdf->WriteHTML($html);
     	$pdf->Output('laporan.pdf');
+    	} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function detail_laporan(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$data['data_laporan'] = $this->Stok_edc_Model->per_iddetail_laporan($this->uri->segment(3));
  		$this->load->view('view_detail_laporan', $data);
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function cari_issue(){
@@ -434,7 +548,13 @@ class Stok_edc extends CI_Controller
 	}
 
 	public function tampil_import(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
 		$this->load->view('view_import_excel');
+		} else {
+			header('location:'.site_url().'/login');
+		}
 	}
 
 	public function import(){

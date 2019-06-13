@@ -34,4 +34,18 @@ class Login extends CI_Controller
 		}
 
 	}
+
+	public function logout()
+	{
+		$cek = $this->session->userdata('isLogin');
+		if(empty($cek))
+		{
+			header('location:'.site_url().'/login');
+		}
+		else
+		{
+			$this->session->sess_destroy();
+			header('location:'.site_url().'/login');
+		}
+	}
 }
