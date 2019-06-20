@@ -24,6 +24,7 @@ class Stok_edc extends CI_Controller
 		$data_edc_IWC220 = $this->Stok_edc_Model->edc_iwc220();
 		$data_edc_MOVE2500 = $this->Stok_edc_Model->edc_move2500();
 		$data_edc_PAXD210 = $this->Stok_edc_Model->edc_paxd210();
+		$data_edc_VERIFONEC680 = $this->Stok_edc_Model->edc_verifonec680();
 		$jumlah['edc_baik'] = count($data_edc_baik);
 		$jumlah['edc_rusak'] = count($data_edc_rusak);
 		$jumlah['edc_ict220'] = count($data_edc_ICT220);
@@ -31,6 +32,7 @@ class Stok_edc extends CI_Controller
 		$jumlah['edc_iwc220'] = count($data_edc_IWC220);
 		$jumlah['edc_move2500'] = count($data_edc_MOVE2500);
 		$jumlah['edc_paxd210'] = count($data_edc_PAXD210);
+		$jumlah['edc_verifonec680'] = count($data_edc_VERIFONEC680);
 		$this->load->view('view_dashboard', $jumlah);
 		} else {
 			header('location:'.site_url().'/login');
@@ -355,6 +357,61 @@ class Stok_edc extends CI_Controller
 		}
  	}
 
+ 	public function hapus_edc_in(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$this->Stok_edc_Model->per_idhapus_edc_in($this->uri->segment(3));
+		redirect('Stok_edc/tampil_edc_in');
+		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
+ 	public function hapus_edc_out(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$this->Stok_edc_Model->per_idhapus_edc_out($this->uri->segment(3));
+		redirect('Stok_edc/tampil_edc_out');
+		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
+ 	public function hapus_issue(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$this->Stok_edc_Model->per_idhapus_issue($this->uri->segment(3));
+		redirect('Stok_edc/tampil_issue');
+		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
+ 	public function hapus_laporan(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$this->Stok_edc_Model->per_idhapus_laporan($this->uri->segment(3));
+		redirect('Stok_edc/tampil_laporan');
+		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
+ 	public function hapus_anggota(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$this->Stok_edc_Model->per_idhapus_anggota($this->uri->segment(3));
+		redirect('Stok_edc/tambah_anggota');
+		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
 	public function tampil_edc_out(){
 		$cek = $this->session->userdata('isLogin');
 
@@ -504,7 +561,12 @@ class Stok_edc extends CI_Controller
 
 		if(!empty($cek)) {
 		ob_start();
-    	$data['data_laporan_print'] = $this->Stok_edc_Model->tampil_laporan_model();
+		$data_filter = $this->Stok_edc_Model->tampil_filter();
+		foreach ($data_filter as $data_flt) {
+			$tanggal_awal = $data_flt->tanggal_awal;
+			$tanggal_akhir = $data_flt->tanggal_akhir;
+		}
+    	$data['data_laporan_print'] = $this->Stok_edc_Model->tampil_print_model($tanggal_awal, $tanggal_akhir);
     	$this->load->view('print_laporan_pdf', $data);
     	$html = ob_get_contents();
         ob_end_clean();
@@ -529,6 +591,113 @@ class Stok_edc extends CI_Controller
 		}
 	}
 
+	public function tambah_anggota(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$tampil_data_tambah_anggota['data_tambah_anggota'] = $this->Stok_edc_Model->tampil_tambah_anggota_model();
+		$this->load->view('view_tambah_anggota', $tampil_data_tambah_anggota);
+		} else {
+			header('location:'.site_url().'/login');
+		}
+	}
+
+	public function add_anggota(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+			$this->load->view('view_add_anggota');
+		} else {
+			header('location:'.site_url().'/login');
+		}
+	}
+
+	public function insert_data_anggota(){
+		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_rules('npp', 'npp', 'trim|required');
+		$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
+		$this->form_validation->set_rules('role', 'role', 'trim|required');
+		$this->form_validation->set_rules('username', 'username', 'trim|required');
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$this->form_validation->set_rules('created_at', 'created_at', 'trim|required');
+
+			if ($this->form_validation->run() == FALSE ) {
+				redirect('Stok_edc/add_anggota');
+			} else {
+				$nama = $this->input->post('nama');
+				$npp = $this->input->post('npp');
+				$jabatan = $this->input->post('jabatan');
+				$role = $this->input->post('role');
+				$username = $this->input->post('username');
+				$password = $this->input->post('password');
+				$created_at = $this->input->post('created_at');
+				$this->Stok_edc_Model->insert_anggota_model($username, $password, $role, $nama, $npp, $jabatan, $created_at);
+			}
+		} else {
+			header('location:'.site_url().'/login');
+		}
+	}
+
+	public function edit_data_anggota(){
+ 		$cek = $this->session->userdata('isLogin');
+
+		if(!empty($cek)) {
+		$data['data_anggota'] = $this->Stok_edc_Model->per_idedit_anggota($this->uri->segment(3));
+ 		$this->load->view('view_edit_anggota', $data);
+		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
+ 	public function update_data_anggota(){
+ 		$cek = $this->session->userdata('isLogin');
+
+ 		if (!empty($cek)) {
+ 		$this->load->library('form_validation');
+		$this->form_validation->set_rules('id', 'id', 'trim|required');
+		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_rules('npp', 'npp', 'trim|required');
+		$this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
+		$this->form_validation->set_rules('role', 'role', 'trim|required');
+		$this->form_validation->set_rules('username', 'username', 'trim|required');
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$this->form_validation->set_rules('updated_at', 'updated_at', 'trim|required');	
+
+ 			if ($this->form_validation->run() == FALSE ) {
+				redirect('Stok_edc/edit_data_anggota');
+			} else {
+				$id = $this->input->post('id');
+				$nama = $this->input->post('nama');
+				$npp = $this->input->post('npp');
+				$jabatan = $this->input->post('jabatan');
+				$role = $this->input->post('role');
+				$username = $this->input->post('username');
+				$password = $this->input->post('password');
+				$updated_at = $this->input->post('updated_at');
+
+				$data = array(
+ 				'username' => $username,
+ 				'password' => $password,
+ 				'role' => $role,
+ 				'nama' => $nama,
+ 				'npp' => $npp,
+ 				'jabatan' => $jabatan,
+ 				'updated_at' => $updated_at
+ 				);
+
+ 				$this->db->where('id', $id);
+				$this->db->update('admin', $data);
+			redirect('stok_edc/tambah_anggota');
+			}
+ 		} else {
+			header('location:'.site_url().'/login');
+		}
+ 	}
+
 	public function cari_issue(){
 		$keyword = $this->input->post('search');
 		$data['data_issue']=$this->Stok_edc_Model->get_search_issue($keyword);
@@ -545,6 +714,13 @@ class Stok_edc extends CI_Controller
 		$keyword = $this->input->post('search');
 		$data['data_edc_out']=$this->Stok_edc_Model->get_search_out($keyword);
 		$this->load->view('view_edc_out',$data);
+	}
+
+	public function filter_laporan(){
+		$tanggal_awal = $this->input->post('tanggal_awal');
+		$tanggal_akhir = $this->input->post('tanggal_akhir');
+		$data['data_laporan'] = $this->Stok_edc_Model->get_filter_laporan($tanggal_awal, $tanggal_akhir);
+		$this->load->view('view_laporan',$data);
 	}
 
 	public function tampil_import(){

@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="<?php echo base_url();?>assets/chart/Chart.js"></script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid bg-light">
 	<header class="bg-light">
 		<div class="row">
 			<div class="col-md-12">
@@ -52,9 +52,11 @@
     				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
     				</li>
-    				
-    				<li style="margin-left: 850px;" class="nav-item">
-    					<a class="nav-link" href="<?php echo site_url();?>/login/logout">Logout</a>
+    				<li class="nav-item">
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tambah_anggota">TAMBAH ANGGOTA</a>
+    				</li>
+    				<li style="margin-left: 680px;" class="nav-item">
+    						<a style="text-decoration: none; color: white;" href="<?php echo site_url();?>/login/logout"><button class="btn btn-secondary" type="button">Logout</button></a>
     				</li>
   				</ul>
 			</nav>
@@ -132,7 +134,7 @@
 							var myChart = new Chart(ctx, {
 								type: 'bar',
 								data: {
-									labels: ["ICT220","ICT250","IWC220","MOVE2500","PAXD210"],
+									labels: ["ICT220","ICT250","IWC220","MOVE2500","PAXD210","VERIFONEC680"],
 										datasets: [{
 											label: 'Grafik Jumlah EDC dikelompokan Berdasarkan Tipe EDC',
 											data: [<?php echo $edc_ict220;?>, <?php echo $edc_ict250;?>, <?php echo $edc_iwc220;?>, <?php echo $edc_move2500; ?>, <?php echo $edc_paxd210; ?>],
@@ -141,14 +143,16 @@
 												'rgba(54, 162, 235, 0.2)',
 												'rgba(255, 206, 86, 0.2)',
 												'rgba(75, 192, 192, 0.2)',
-												'rgba(255, 159, 64, 0.2)'
+												'rgba(255, 159, 64, 0.2)',
+												'rgba(255, 145, 45, 0.2)'
 											],
 											borderColor: [
 												'rgba(255,99,132,1)',
 												'rgba(54, 162, 235, 1)',
 												'rgba(255, 206, 86, 1)',
 												'rgba(75, 192, 192, 1)',
-												'rgba(255, 159, 64, 1)'
+												'rgba(255, 159, 64, 1)',
+												'rgba(255, 145, 45, 1)'
 											],
 											borderWidth: 1
 											}]
@@ -172,10 +176,10 @@
 		</div>
 	</content>
 </div>
-	<footer class="bg-secondary">
+	<footer class="">
 		<div class="row">
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
-			<div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:black;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>

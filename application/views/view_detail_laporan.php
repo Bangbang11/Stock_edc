@@ -221,7 +221,6 @@
                     </div>
                 </div>
               </form>
-                <a href="<?php echo site_url();?>/stok_edc/rusak_done_issue/<?php echo $data->id;?>"><button style="margin-left: 230px; margin-top: 30px; margin-bottom: 30px; width: 200px;" class="btn btn-primary">Print</button></a>
   					</div> 
             <?php 
              }
@@ -233,10 +232,10 @@
 		</div>
 	</content>
 </div>
-	<footer class="bg-secondary">
+	<footer class="">
 		<div class="row">
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
-			<div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:black;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>

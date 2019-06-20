@@ -74,6 +74,7 @@
                           <option value="IWC220">IWC220</option>
                           <option value="MOVE2500">MOVE2500</option>
                           <option value="PAXD210">PAXD210</option>
+                          <option value="PAXD210">VERIFONEC680</option>
                         </select>
                       </div>
                     </div>
@@ -143,10 +144,10 @@
 		</div>
 	</content>
 </div>
-	<footer class="bg-secondary">
+	<footer class="">
 		<div class="row">
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
-			<div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:black">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>

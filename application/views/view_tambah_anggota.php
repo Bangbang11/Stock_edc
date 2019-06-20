@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Halaman EDC IN</title>
+	<title>Halaman Tambah Anggota</title>
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,21 +37,21 @@
 			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
   				<ul class="navbar-nav">
     				<li class="nav-item">
-      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc">DASHBOARD</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc">DASHBOARD</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_issue">ISSUE</a>
-    				</li>
-    				<li class="nav-item active">
-      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">EDC IN</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">ISSUE</a>
     				</li>
     				<li class="nav-item">
-      					<a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_in">EDC IN</a>
+    				</li>
+    				<li class="nav-item">
+      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_edc_out">EDC OUT</a>
     				</li>
             <li class="nav-item">
-                <a class="nav-link disable" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
+                <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tambah_anggota">TAMBAH ANGGOTA</a>
             </li>
     				<li style="margin-left: 680px;" class="nav-item">
@@ -65,23 +65,17 @@
 		<div class="row">
 			<div style="margin-top: 10px; margin-bottom: 10px;" class="col-md-12">
 				<div class="card">
-  					<div class="card-header">Data EDC IN/EDC Masuk</div>
+  					<div class="card-header">Data Anggota/Admin</div>
   					<div class="card-body">
               <div class="row">
                 <div class="col-md-12">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-5">
                       <button style="height: 35px;">
-                        <a href='<?php echo site_url();?>/stok_edc/form_edc_in' class='btn btn-succes' style="padding-top: 0px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah EDC Baru</a>
+                        <a href='<?php echo site_url();?>/stok_edc/add_anggota' class="btn btn-light" style="padding-top: 0px; font-size: 14px;"><i class='fas fa-cash-register'></i>&nbsp;Tambah Anggota Baru</a>
                       </button>
                     </div>
                     <div class="col-md-7">
-                      <form>
-                        <div class="form-group form-inline">
-                          <input type="text" name="search" placeholder="Search" class="form-control" style="width: 670px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
-                          <input type="submit" value="Cari" class="form-control btn btn-primary" style="border-top-left-radius: 0px;border-bottom-left-radius: 0px;">
-                        </div>
-                      </form>
                     </div>
                   </div>
                 </div>      
@@ -91,9 +85,13 @@
   							<table class="table table-striped table-condensed table-hover cf" id="dataTables-example">
                             	<thead class="cf">
                                 	<tr>
-                                    	<th style='text-align:center'>Serial Number</th>
-                                    	<th style='text-align:center'>Tipe EDC</th>
-                                    	<th style='text-align:center'>Kondisi</th>
+                                    	<th style='text-align:center'>ID</th>
+                                      <th style='text-align:center'>Nama</th>
+                                      <th style='text-align:center'>NPP</th>
+                                      <th style='text-align:center'>Jabatan</th>
+                                      <th style='text-align:center'>Role</th>
+                                    	<th style='text-align:center'>Username</th>
+                                    	<th style='text-align:center'>Password</th>
                                     	<th style='text-align:center'>Tanggal Masuk</th>
                                     	<th style='text-align:center'>Aksi</th>
                                 	</tr>
@@ -101,17 +99,21 @@
                             	<tbody>
                                   
 								<?php
-									if(!empty($data_edc_in)){
-    									foreach($data_edc_in as $data){ ?>
+									if(!empty($data_tambah_anggota)){
+    									foreach($data_tambah_anggota as $data){ ?>
         							<tr>
-        								<td style='text-align:center'  data-title='Serial Number'><?php echo $data->serial_number; ?></td>
-        								<td style='text-align:center' data-title='Tipe EDC'><?php echo $data->tipe_edc; ?></td>
-        								<td style='text-align:center'  data-title='Kondisi' ><?php echo $data->kondisi;?></td>
-        								<td style='text-align:center'  data-title='Tanggal Masuk' ><?php echo $data->date_in;?></td>
-        								<td style='text-align:center' data-title='aksi_edc_in'>
-                    						<a href="<?php echo site_url();?>/stok_edc/detail_edc_in_duplicate/<?php echo $data->serial_number;?>" class="label label-warning">
-                    							<i class= 'fas fa-edit'></i>&nbsp;Detail</a>
-                    						<a href="<?php echo site_url();?>/stok_edc/hapus_edc_in/<?php echo $data->serial_number;?>" class="label label-danger">
+        								<td style='text-align:center'  data-title='ID'><?php echo $data->id; ?></td>
+                        <td style='text-align:center'  data-title='Nama'><?php echo $data->nama; ?></td>
+                        <td style='text-align:center'  data-title='NPP'><?php echo $data->npp; ?></td>
+                        <td style='text-align:center'  data-title='Jabatan'><?php echo $data->jabatan; ?></td>
+                        <td style='text-align:center'  data-title='Role'><?php echo $data->role; ?></td>
+        								<td style='text-align:center' data-title='Username'><?php echo $data->username; ?></td>
+        								<td style='text-align:center'  data-title='Password' ><?php echo $data->password;?></td>
+        								<td style='text-align:center'  data-title='Created_at' ><?php echo $data->created_at;?></td>
+        								<td style='text-align:center' data-title='aksi_anggota'>
+                    						<a href="<?php echo site_url();?>/stok_edc/edit_data_anggota/<?php echo $data->id;?>" class="label label-warning">
+                    							<i class= 'fas fa-edit'></i>&nbsp;Edit</a>
+                    						<a href="<?php echo site_url();?>/stok_edc/hapus_anggota/<?php echo $data->id;?>" class="label label-danger">
                     							<i class= 'fas fa-trash'></i>&nbsp;Hapus</a>
               							</td>
     								</tr>
@@ -122,6 +124,11 @@
                                    
                             	</tbody>
                         	</table> 
+                          <div class="row">
+                            <div class="col-md-3">
+                              <?php echo $this->pagination->create_links(); ?>
+                            </div>
+                          </div>
   						</div> 
   					<div class="card-footer"></div>
 				</div>

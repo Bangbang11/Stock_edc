@@ -136,9 +136,9 @@ class Stok_edc_Model extends CI_Model
 		header('location:'.site_url().'/stok_edc/tampil_edc_in_duplicate2');
 	}																																																																					
 
-	public function baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out){
+	public function baik_done($id,$serial_number, $tipe_edc, $kondisi_1, $status_edc, $kondisi_edc, $mid, $tid, $nama_merchant, $alamat, $digunakan, $vendor, $date_in,$date_out, $status_issue, $case_issue){
 		$this->db->query("INSERT INTO edc_in (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."')");
-		$this->db->query("INSERT INTO laporan (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, vendor, date_in,date_out, status_issue, case_issue) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$vendor."', '".$date_in."', '".$date_out."', '".$status_issue."', '".$case_issue."')");
+		$this->db->query("INSERT INTO laporan (serial_number, tipe_edc, kondisi, status_edc, kondisi_edc, mid, tid, nama_merchant, alamat_merchant, digunakan, status_issue, case_issue, vendor, date_in,date_out) VALUES ('".$serial_number."', '".$tipe_edc."', '".$kondisi_1."', '".$status_edc."', '".$kondisi_edc."', '".$mid."', '".$tid."', '".$nama_merchant."', '".$alamat."', '".$digunakan."', '".$status_issue."', '".$case_issue."', '".$vendor."', '".$date_in."', '".$date_out."')");
 		$this->db->query("DELETE FROM issue WHERE id = '".$id."'");
 		header('location:'.site_url().'/stok_edc/tampil_edc_in');
 	}
@@ -172,6 +172,10 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->query('SELECT * FROM laporan ORDER BY id ASC')->result();
 	}
 
+	public function tampil_print_model($tanggal_awal, $tanggal_akhir){
+		return $this->db->query('SELECT * FROM laporan WHERE date_out BETWEEN "'.$tanggal_awal.'" AND "'.$tanggal_akhir.'"')->result();
+	}
+
 	public function per_iddetail_laporan($id){
 		return $this->db->query('SELECT * FROM laporan WHERE id = "'.$id.'" ')->result();
 	}
@@ -182,6 +186,15 @@ class Stok_edc_Model extends CI_Model
 
 	public function tampil_temporary_data(){
 		return $this->db->query('SELECT * FROM temporary_data')->result();
+	}
+
+	public function tampil_tambah_anggota_model(){
+		return $this->db->query('SELECT * FROM admin ORDER BY id ASC')->result();	
+	}
+
+	public function insert_anggota_model($username, $password, $role, $nama, $npp, $jabatan, $created_at){
+		$this->db->query("INSERT INTO admin (username, password, role, nama, npp, jabatan, created_at, updated_at) VALUES ('".$username."', '".$password."', '".$role."', '".$nama."', '".$npp."', '".$jabatan."', '".$created_at."', '".$created_at."')");
+			header('location:'.site_url().'/stok_edc/tambah_anggota');
 	}
 
 	public function get_search_issue($keyword){
@@ -206,6 +219,16 @@ class Stok_edc_Model extends CI_Model
 		$this->db->like('serial_number',$keyword);
 		$this->db->or_like('tipe_edc',$keyword);
 		return $this->db->get()->result();
+	}
+
+	public function get_filter_laporan($tanggal_awal, $tanggal_akhir){
+		$this->db->query("DELETE FROM filter");
+		$this->db->query("INSERT INTO filter (tanggal_awal, tanggal_akhir) VALUES ('".$tanggal_awal."', '".$tanggal_akhir."')");
+		return $this->db->query('SELECT * FROM laporan WHERE date_out BETWEEN "'.$tanggal_awal.'" AND "'.$tanggal_akhir.'"')->result();
+	}
+
+	public function tampil_filter(){
+		return $this->db->query('SELECT * FROM filter ORDER BY id ASC')->result();
 	}
 
 	public function jumlah_data(){
@@ -260,8 +283,36 @@ class Stok_edc_Model extends CI_Model
 		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "PAXD210" ')->result();
 	}
 
+	public function edc_verifonec680(){
+		return $this->db->query('SELECT * FROM edc_in WHERE tipe_edc = "VERIFONEC680" ')->result();
+	}
+
 	public function insert($data){
 		$this->db->insert_batch('edc_in',$data);
+	}
+
+	public function per_idhapus_edc_in($serial_number) {
+		return $this->db->query('DELETE FROM edc_in WHERE serial_number = "'.$serial_number.'" ');
+	}
+
+	public function per_idhapus_edc_out($serial_number) {
+		return $this->db->query('DELETE FROM edc_out WHERE serial_number = "'.$serial_number.'" ');
+	}
+
+	public function per_idhapus_issue($id) {
+		return $this->db->query('DELETE FROM issue WHERE id = "'.$id.'" ');
+	}
+
+	public function per_idhapus_laporan($id) {
+		return $this->db->query('DELETE FROM laporan WHERE id = "'.$id.'" ');
+	}
+
+	public function per_idhapus_anggota($id) {
+		return $this->db->query('DELETE FROM admin WHERE id = "'.$id.'" ');
+	}
+
+	public function per_idedit_anggota($id){
+		return $this->db->query('SELECT * FROM admin WHERE id = "'.$id.'" ')->result();
 	}
 
 }

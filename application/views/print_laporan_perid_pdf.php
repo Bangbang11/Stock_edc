@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Issue</title>
+	<title>Detail Laporan</title>
 	<meta charset="utf-8">
 	<meta name="Author" content="Bangbang">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,53 +18,31 @@
 </head>
 <body>
 <div class="container-fluid">
-	<header class="bg-light">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-1">
-            			<br>
-            			<img src="<?php echo base_url();?>assets/logo/bni-logo-id.svg" alt="logo-bni" >
-            			<br>
-            		</div>
-					<div class="col-md-5">
-						<h2 style="padding-top: 13px; margin-left: 70px;"><strong> Aplikasi Stock Opname <br>EDC BNI</strong></h2>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-</div>
-		<div>
-			<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-  				<ul class="navbar-nav">
-    				<li class="nav-item">
-      					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_issue">Kembali</a>
-    				</li>
-
-    				
-  				</ul>
-			</nav>
-		</div>
-<div class="container-fluid">
 	<content>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
 				<div class="card">
-  					<div class="card-header">Detail Issue</div>
+  					<div class="card-header">Detail Laporan</div>
   					<div class="card-body">
   						<br>
               <form method="post" action="#" enctype="multipart/form-data">
                 <?php 
-               if(!empty($data_issue)) {
-               foreach($data_issue as $data) {
+               if(!empty($data_laporan_print)) {
+               foreach($data_laporan_print as $data) {
                ?>
                 <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Serial Number </label>
                     <div class="col-sm-10">
                       <div class="f"> 
                         : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->serial_number;?>"  style="width: 1000px;" required="">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                  <label class="col-sm-2 control-label">Serial Number Pengganti</label>
+                    <div class="col-sm-10">
+                      <div class="f"> 
+                        : <input type="text" class="form-control" name="serial_number" value="<?php echo $data->serial_number_pengganti;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div> 
@@ -77,10 +55,26 @@
                     </div>
                 </div>
                 <div class="form-group form-inline">
+                  <label class="col-sm-2 control-label">Tipe EDC Pengganti</label>
+                    <div class="col-sm-10">
+                      <div class="f"> 
+                        : <input type="text" class="form-control" name="tipe_edc" value="<?php echo $data->tipe_edc_pengganti;?>"  style="width: 1000px;" required="">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Kondisi 1</label>
                     <div class="col-sm-10">
                       <div class="f"> 
                         : <input type="text" class="form-control" name="kondisi_1" value="<?php echo $data->kondisi;?>"  style="width: 1000px;" required="">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                  <label class="col-sm-2 control-label">Kondisi 1 Pengganti</label>
+                    <div class="col-sm-10">
+                      <div class="f"> 
+                        : <input type="text" class="form-control" name="kondisi_1" value="<?php echo $data->kondisi_pengganti;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -93,10 +87,26 @@
                     </div>
                 </div>
                 <div class="form-group form-inline">
+                  <label class="col-sm-2 control-label">Status EDC Pengganti</label>
+                    <div class="col-sm-10">
+                      <div class="f"> 
+                        : <input type="text" class="form-control" name="status_edc" value="<?php echo $data->status_edc_pengganti;?>"  style="width: 1000px;" required="">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
                   <label class="col-sm-2 control-label">Kondisi 2</label>
                     <div class="col-sm-10">
                       <div class="f"> 
                         : <input type="text" class="form-control" name="kondisi_edc" value="<?php echo $data->kondisi_edc;?>"  style="width: 1000px;" required="">
+                      </div>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                  <label class="col-sm-2 control-label">Kondisi 2 Pengganti</label>
+                    <div class="col-sm-10">
+                      <div class="f"> 
+                        : <input type="text" class="form-control" name="kondisi_edc" value="<?php echo $data->kondisi_edc_pengganti;?>"  style="width: 1000px;" required="">
                       </div>
                     </div>
                 </div>
@@ -181,10 +191,7 @@
                     </div>
                 </div>
               </form>
-                <a href="<?php echo site_url();?>/stok_edc/rusak_done_issue/<?php echo $data->id;?>"><button style="margin-left: 250px; margin-top: 30px; margin-bottom: 30px;" class="btn btn-primary">Rusak Done</button></a>
-                <a href="<?php echo site_url();?>/stok_edc/rusak_replace_issue/<?php echo $data->id;?>"><button style="margin-left: 30px; margin-top: 30px; margin-bottom: 30px;" class="btn btn-primary">Rusak Replace</button></a>
-                <a href="<?php echo site_url();?>/stok_edc/baik_replace_issue/<?php echo $data->id;?>"><button style="margin-left: 30px; margin-top: 30px; margin-bottom: 30px;" class="btn btn-primary">Baik Replace</button></a>
-                <a href="<?php echo site_url();?>/stok_edc/baik_done_issue/<?php echo $data->id;?>"><button style="margin-left: 30px; margin-top: 30px; margin-bottom: 30px;" class="btn btn-primary">Baik Done</button></a>
+                <a href="<?php echo site_url();?>/stok_edc/print_per_id/<?php echo $data->id;?>"><button style="margin-left: 230px; margin-top: 30px; margin-bottom: 30px; width: 200px;" class="btn btn-primary">Print</button></a>
   					</div> 
             <?php 
              }

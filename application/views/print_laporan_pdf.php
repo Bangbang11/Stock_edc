@@ -15,7 +15,7 @@
   <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <h1 style="text-align: center;">APLIKASI STOCK OPNAME EDC BNI</h1>
+  <h1 style="text-align: center;">LAPORAN EDC BNI46</h1>
   <hr>
     <table class="table table-striped table-condensed table-hover cf" id="dataTables-example" style="margin-left: 30px;">
         <thead class="cf">

@@ -20,7 +20,7 @@ class Login extends CI_Controller
 		
 		$this->load->library("form_validation");
 		$this->form_validation->set_rules('username', 'username', 'trim|required|min_length[4]|max_length[20]');
-        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[4]|max_length[12]');
+        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[4]|max_length[14]');
 
 		if ($this->form_validation->run() == FALSE) 
 		{

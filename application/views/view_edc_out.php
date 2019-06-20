@@ -15,7 +15,7 @@
 	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid bg-light">
 	<header class="bg-light">
 		<div class="row">
 			<div class="col-md-12">
@@ -52,13 +52,16 @@
     				<li class="nav-item">
       					<a class="nav-link" href="<?php echo site_url();?>/stok_edc/tampil_laporan">LAPORAN</a>
     				</li>
-    				<li style="margin-left: 850px;" class="nav-item">
-    					<a class="nav-link" href="<?php echo site_url();?>/login/logout">Logout</a>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url();?>/stok_edc/tambah_anggota">TAMBAH ANGGOTA</a>
+            </li>
+    				<li style="margin-left: 680px;" class="nav-item">
+    					<a style="text-decoration: none; color: white;" href="<?php echo site_url();?>/login/logout"><button class="btn btn-secondary" type="button">Logout</button></a>
     				</li>
   				</ul>
 			</nav>
 		</div>
-<div class="container-fluid" style="height: 600px;">
+<div class="container-fluid" style="min-height: 600px;">
 	<content>
 		<div class="row">
 			<div class="col-md-12" style="margin-top: 10px; margin-bottom: 15px;">
@@ -113,7 +116,7 @@
        								<td style='text-align:center' data-title='aksi_edc_out'>
                     					<a href="<?php echo site_url();?>/stok_edc/detail_edc_out/<?php echo $data->serial_number;?>" class="label label-warning">
                     						<i class= 'fas fa-edit'></i>&nbsp;Detail</a>
-                    					<a href="#" class="label label-danger">
+                    					<a href="<?php echo site_url();?>/stok_edc/hapus_edc_out/<?php echo $data->serial_number;?>" class="label label-danger">
                     						<i class= 'fas fa-trash'></i>&nbsp;Hapus</a>
               						</td>
      							</tr> 
@@ -136,10 +139,10 @@
 		</div>
 	</content>
 </div>
-	<footer class="bg-secondary">
+	<footer class="">
 		<div class="row">
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
-			<div class="col-md-12 "><h6 style="text-align: center; color:orange;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
+			<div class="col-md-12 "><h6 style="text-align: center; color:black;">&copy; PT. Bank Negara Indonesia (Persero). Tbk</h6></div>
 			<div class="col-md-12 "><h6 style="text-align: center; color:orange;"> </h6></div>
 		</div>
 	</footer>
